@@ -1,0 +1,110 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+  overflow: hidden;
+}
+.img{
+  width: 100%;
+  filter: blur(3px);
+}
+a {
+  text-decoration: none;
+}
+
+nav {
+  z-index: 10;
+  font-size: 2rem;
+  position: fixed;
+  top: 0;
+  left: 0%;
+ 
+}
+
+ul {
+  /* background: #4c83b0; */
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  
+}
+
+.gradient{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 35, 116, 0.876) 25%, rgba(0, 35, 116, 0.876) 75%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.664);
+  border: none;
+}
+
+li {
+  color: #fff;
+  /* background: #4c83b0; */
+  padding: 1.5rem 5rem;
+  position: relative;
+  text-decoration: none;
+  transition-duration: 0.5s;
+  width: 150px;
+}
+
+  
+li a {
+  color: #fff;
+}
+
+li:hover {
+  background: rgba(0, 0, 0, 0.198);
+  cursor: pointer;
+}
+
+ul li ul {
+  background: rgba(0, 35, 116, 0.63);
+  visibility: hidden;
+  opacity: 0;
+  min-width: 5rem;
+  position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1.5rem;
+  left: 0;
+  display: none;
+}
+
+ul li:hover > ul,
+ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+  
+}
+
+ul li ul li {
+  clear: both;
+}
+
+.container{
+  position: fixed;
+  top: 40%;
+  font-size: 100px;
+  width: 100%;
+  top: 25%;
+  color: white;
+  font-weight: bolder;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0px 0px 30px rgba(0, 0, 0, 0.664);
+}
+.container h1{
+  margin-left: 40px;
+ 
+}
+
+.footer{
+  height: 65px;
+  position: fixed;
+  bottom: 0;
+}
