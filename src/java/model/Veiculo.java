@@ -13,11 +13,11 @@ public class Veiculo {
     private double valorCompra;
     private double valorVenda;
     private int numeroPassageiros;
-    private Date anoFabricacao;
-    private Date anoModelo;
+    private int anoFabricacao;
+    private int anoModelo;
     private String tipoCombustivel;
     private int quilometragem;
-    private String statusDisponivel;
+    private boolean statusDisponivel;
 
     public int getRenavam() {
         return renavam;
@@ -91,20 +91,28 @@ public class Veiculo {
         this.numeroPassageiros = numeroPassageiros;
     }
 
-    public Date getAnoFabricacao() {
+    public int getAnoFabricacao() {
         return anoFabricacao;
     }
 
-    public void setAnoFabricacao(Date anoFabricacao) {
+    public void setAnoFabricacao(int anoFabricacao) {
         this.anoFabricacao = anoFabricacao;
     }
 
-    public Date getAnoModelo() {
+    public int getAnoModelo() {
         return anoModelo;
     }
 
-    public void setAnoModelo(Date anoModelo) {
+    public void setAnoModelo(int anoModelo) {
         this.anoModelo = anoModelo;
+    }
+
+    public boolean isStatusDisponivel() {
+        return statusDisponivel;
+    }
+
+    public void setStatusDisponivel(boolean statusDisponivel) {
+        this.statusDisponivel = statusDisponivel;
     }
 
     public String getTipoCombustivel() {
@@ -123,13 +131,6 @@ public class Veiculo {
         this.quilometragem = quilometragem;
     }
 
-    public String getStatusDisponivel() {
-        return statusDisponivel;
-    }
-
-    public void setStatusDisponivel(String statusDisponivel) {
-        this.statusDisponivel = statusDisponivel;
-    }
 
     @Override
     public String toString() {
