@@ -9,7 +9,7 @@ package br.com.locadora.model;
  *
  * @author suporte
  */
-public class ClientePj extends Client {
+public class ClientPj extends Client {
     private int id;
     private String fantasyName;
     private String razaoSocial;
@@ -115,4 +115,5 @@ public class ClientePj extends Client {
     public void setCity(City city) {
         this.city = city;
     }
+
 }
