@@ -18,7 +18,7 @@
             <div>
                 <label>Ufs</label>
                 <div>      
-          <table>
+          <table border=1>
         <thead>
             <tr>
                 <th>Id</th>

@@ -9,6 +9,7 @@ import br.com.locadora.model.City;
 import br.com.locadora.model.Uf;
 import br.com.locadora.util.Conexao;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -47,6 +48,26 @@ public class CityDal {
             }
 
             return citys;
+    }
+         
+          public City getCityById(int id) {
+        City city = new City();
+        try {
+            PreparedStatement preparedStatement = conexao.
+                    prepareStatement("select * from city where id=?");
+            preparedStatement.setInt(1,id);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                city.setId(rs.getInt("id"));
+                city.setName(rs.getString("name"));
+                
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return city;
     }
     
 }

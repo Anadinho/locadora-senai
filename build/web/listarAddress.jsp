@@ -22,26 +22,34 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>cidade</th>
-                <th>uf</th>
+                <th>cep</th>
+                <th>Numbero Endereço</th>
+                <th>Complemento</th>
+                <th>Bairro</th>
+                 <th>Cidade</th>
+                 <th>UF</th>
                 <th colspan=2 >Action</th>
             </tr>
         </thead>
         <tbody>
-            <c:forEach items="${citys}" var="user">
+            <c:forEach items="${addresss}" var="user">
                 <tr >
                     <td><c:out value="${user.id}" /></td>
-                    <td><c:out value="${user.name}" /></td>
+                    <td><c:out value="${user.cep}" /></td>
+                    <td><c:out value="${user.numberAddress}" /></td>
+                    <td><c:out value="${user.complement}" /></td>
+                    <td><c:out value="${user.district}" /></td>
+                    <td><c:out value="${user.city.name}" /></td>
                     <td><c:out value="${user.uf.name}" /></td>
-                     <td ><a  href="CityController?action=edit&id=<c:out value="${user.id}"/>" >Update</a></td>
-                    <td><a href="CityController?action=delete&id=<c:out value="${user.name}"/>">Delete</a></td>
+                     <td ><a  href="AddressController?action=edit&id=<c:out value="${user.id}"/>" >Update</a></td>
+                    <td><a href="AddressController?action=delete&id=<c:out value="${user.id}"/>">Delete</a></td>
                 </tr>
             </c:forEach>
         </tbody>
     </table>
        </div>
          </div>
-        <button onclick="window.location.href='CityController?action=listarCity'" ></button>
+        <button onclick="window.location.href='AddressController?action=listarAddress'" ></button>
            </div>
     </body>
 </html>
