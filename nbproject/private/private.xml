@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/src/java/br/com/locadora/bll/CityController.java</file>
+            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/web/listarCity.jsp</file>
+            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/src/java/br/com/locadora/model/Uf.java</file>
+            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/src/java/br/com/locadora/model/City.java</file>
+            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/web/listarUf.jsp</file>
+            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/src/java/br/com/locadora/dal/UfDal.java</file>
+            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/src/java/br/com/locadora/dal/CityDal.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -8,6 +8,7 @@ package br.com.locadora.dal;
 import br.com.locadora.model.Uf;
 import br.com.locadora.util.Conexao;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -44,6 +45,26 @@ public class UfDal {
             }
 
             return ufs;
+    }
+         
+ public Uf getUfById(int id) {
+        Uf uf = new Uf();
+        try {
+            PreparedStatement preparedStatement = conexao.
+                    prepareStatement("select * from uf where id=?");
+            preparedStatement.setInt(1,id);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                uf.setId(rs.getInt("id"));
+                uf.setName(rs.getString("name"));
+                
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return uf;
     }
     
 }
