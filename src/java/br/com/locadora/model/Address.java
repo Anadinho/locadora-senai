@@ -17,8 +17,6 @@ public class Address {
     private String complement;
     private String district;
     private String logradouro;
-   
-    private Uf uf;
     private City city;
 
     /**
@@ -75,20 +73,6 @@ public class Address {
      */
     public void setDistrict(String district) {
         this.district = district;
-    }
-
-    /**
-     * @return the uf
-     */
-    public Uf getUf() {
-        return uf;
-    }
-
-    /**
-     * @param uf the uf to set
-     */
-    public void setUf(Uf uf) {
-        this.uf = uf;
     }
 
     /**

@@ -32,7 +32,7 @@ public class AddressDal {
          public List<Address> getAllAddress() {
         List<Address> addresss = new ArrayList<Address>();
             String sql = "select * from address";
-                    UfDal uf = new UfDal();
+
                     CityDal city = new CityDal();
                             
             try {
@@ -45,7 +45,6 @@ public class AddressDal {
                     address.setNumberAddress(rs.getInt("numberAddress"));
                     address.setComplement(rs.getString("complement"));
                     address.setDistrict(rs.getString("district"));
-                    address.setUf(uf.getUfById(rs.getInt("fk_uf_address")));
                     address.setCity(city.getCityById(rs.getInt("fk_city_address")));
                     address.setLogradouro(rs.getString("logradouro"));
                     
@@ -60,6 +59,7 @@ public class AddressDal {
          
  public Address getAddressById(int id) {
         Address address = new Address();
+        CityDal city = new CityDal();
         try {
             PreparedStatement preparedStatement = conexao.
                     prepareStatement("select * from address where id=?");
@@ -73,6 +73,7 @@ public class AddressDal {
                 address.setComplement(rs.getString("complement"));
                 address.setDistrict(rs.getString("district"));
                 address.setLogradouro(rs.getString("logradouro"));
+                address.setCity(city.getCityById(rs.getInt("fk_city_address")));
                 
             }
         } catch (SQLException e) {

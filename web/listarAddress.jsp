@@ -40,7 +40,7 @@
                     <td><c:out value="${user.complement}" /></td>
                     <td><c:out value="${user.district}" /></td>
                     <td><c:out value="${user.city.name}" /></td>
-                    <td><c:out value="${user.uf.name}" /></td>
+                    <td><c:out value="${user.city.uf.name}" /></td>
                      <td ><a  href="AddressController?action=edit&id=<c:out value="${user.id}"/>" >Update</a></td>
                     <td><a href="AddressController?action=delete&id=<c:out value="${user.id}"/>">Delete</a></td>
                 </tr>

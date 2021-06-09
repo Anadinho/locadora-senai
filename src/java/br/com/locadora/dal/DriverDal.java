@@ -34,12 +34,7 @@ public class DriverDal {
             String sql = "select * \n" +
 "	from driver d join address a on d.fk_address_driver=a.fk_city_address";
                     AddressDal address = new AddressDal();
-                    ContactDal contact = new ContactDal();
-                    UfDal uf = new UfDal();
-                    CityDal city = new CityDal();
-                     
-
-                            
+                    ContactDal contact = new ContactDal();                   
             try {
                 Statement statement = conexao.createStatement();
                 ResultSet rs = statement.executeQuery(sql);
@@ -55,11 +50,7 @@ public class DriverDal {
                     driver.setUrlCnh(rs.getString("urlCnh"));
                     
                     driver.setAddress(address.getAddressById(rs.getInt("fk_address_driver")));                    
-                    driver.setContact(contact.getContactById(rs.getInt("fk_contact_driver")));
-                    
-                    driver.setUf(uf.getUfById(rs.getInt("fk_uf_address")));
-                    driver.setCity(city.getCityById(rs.getInt("fk_city_address")));
-                    
+                    driver.setContact(contact.getContactById(rs.getInt("fk_contact_driver")));                    
                     drivers.add(driver);
                 }
             } catch (SQLException e) {
@@ -71,6 +62,9 @@ public class DriverDal {
          
  public Driver getDriverById(String cpf) {
         Driver driver = new Driver();
+        AddressDal address = new AddressDal();
+        ContactDal contact = new ContactDal();
+        
         try {
             PreparedStatement preparedStatement = conexao.
              prepareStatement("select * from driver where cpf=?");
@@ -84,7 +78,9 @@ public class DriverDal {
                 driver.setIdentity(rs.getString("identity"));
                 driver.setCnh(rs.getString("cnh"));
                 driver.setCnhValidity(rs.getDate("cnhValidity"));
-                driver.setUrlCnh(rs.getString("urlCnh"));               
+                driver.setUrlCnh(rs.getString("urlCnh"));    
+                driver.setAddress(address.getAddressById(rs.getInt("fk_address_driver")));
+                driver.setContact(contact.getContactById(rs.getInt("fk_contact_driver")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

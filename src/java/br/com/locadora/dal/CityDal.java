@@ -52,6 +52,7 @@ public class CityDal {
          
           public City getCityById(int id) {
         City city = new City();
+        UfDal uf = new UfDal();
         try {
             PreparedStatement preparedStatement = conexao.
                     prepareStatement("select * from city where id=?");
@@ -61,6 +62,7 @@ public class CityDal {
             if (rs.next()) {
                 city.setId(rs.getInt("id"));
                 city.setName(rs.getString("name"));
+                city.setUf(uf.getUfById(rs.getInt("fk_uf_city")));               
                 
             }
         } catch (SQLException e) {

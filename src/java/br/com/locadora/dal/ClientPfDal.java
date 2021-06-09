@@ -34,11 +34,8 @@ public class ClientPfDal {
             String sql = "select * \n" +
 "	from clientPf pf join client c on pf.fk_client_pf =c.id\n" +
 "	join address a on a.id =c.fk_address_client;";
-//                    ClientDal client = new ClientDal();
                     AddressDal address = new AddressDal();
                     ContactDal contact = new ContactDal();
-                    UfDal uf = new UfDal();
-                    CityDal city = new CityDal();
                      
 
                             
@@ -52,8 +49,6 @@ public class ClientPfDal {
                     pf.setName(rs.getString("name"));  
                     pf.setAddress(address.getAddressById(rs.getInt("fk_address_client")));
                     pf.setContact(contact.getContactById(rs.getInt("fk_contact_client")));
-                    pf.setUf(uf.getUfById(rs.getInt("fk_uf_address")));
-                    pf.setCity(city.getCityById(rs.getInt("fk_city_address")));
                     clientPfs.add(pf);
                 }
             } catch (SQLException e) {
@@ -65,6 +60,8 @@ public class ClientPfDal {
          
  public ClientPf getClientPfById(int id) {
         ClientPf clientPf = new ClientPf();
+        AddressDal address = new AddressDal();
+        ContactDal contact = new ContactDal();       
         try {
             PreparedStatement preparedStatement = conexao.
              prepareStatement("select * from clientPf where id=?");
@@ -74,7 +71,9 @@ public class ClientPfDal {
             if (rs.next()) {
                 clientPf.setId(rs.getInt("id"));
                 clientPf.setIdentity(rs.getString("identity"));
-                clientPf.setName(rs.getString("name"));                
+                clientPf.setName(rs.getString("name"));   
+                clientPf.setAddress(address.getAddressById(rs.getInt("fk_address_client")));
+                clientPf.setContact(contact.getContactById(rs.getInt("fk_contact_client")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

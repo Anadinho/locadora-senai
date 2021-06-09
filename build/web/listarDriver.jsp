@@ -55,8 +55,8 @@
                     <td><c:out value="${user.address.numberAddress}" /></td>
                     <td><c:out value="${user.address.complement}" /></td>
                     <td><c:out value="${user.address.district}" /></td>
-                    <td><c:out value="${user.city.name}" /></td>
-                     <td><c:out value="${user.uf.name}" /></td>
+                    <td><c:out value="${user.address.city.name}" /></td>
+                     <td><c:out value="${user.address.city.uf.name}" /></td>
                     <td><c:out value="${user.contact.telephone}" /></td>
                      <td ><a  href="DriverController?action=edit&cpf=<c:out value="${user.cpf}"/>" >Update</a></td>
                     <td><a href="DriverController?action=delete&cpf=<c:out value="${user.cpf}"/>">Delete</a></td>

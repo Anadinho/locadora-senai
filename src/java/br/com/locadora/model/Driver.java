@@ -19,13 +19,9 @@ public class Driver {
     private String cnh;
     private String category;
     private Date cnhValidity;
-    private String urlCnh;
-    
-    
+    private String urlCnh;   
     private Address address;
     private Contact contact;
-    private Uf uf;
-    private City city;
 
     /**
      * @return the id
@@ -137,34 +133,6 @@ public class Driver {
      */
     public void setContact(Contact contact) {
         this.contact = contact;
-    }
-
-    /**
-     * @return the uf
-     */
-    public Uf getUf() {
-        return uf;
-    }
-
-    /**
-     * @param uf the uf to set
-     */
-    public void setUf(Uf uf) {
-        this.uf = uf;
-    }
-
-    /**
-     * @return the city
-     */
-    public City getCity() {
-        return city;
-    }
-
-    /**
-     * @param city the city to set
-     */
-    public void setCity(City city) {
-        this.city = city;
     }
 
     /**

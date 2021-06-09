@@ -52,6 +52,7 @@ public class ModelDal {
          
           public Model getModelById(int id) {
         Model model = new Model();
+        BrandDal brand = new BrandDal();
         try {
             PreparedStatement preparedStatement = conexao.
                     prepareStatement("select * from model where id=?");
@@ -61,6 +62,7 @@ public class ModelDal {
             if (rs.next()) {
                 model.setId(rs.getInt("id"));
                 model.setName(rs.getString("name"));
+                model.setBrand(brand.getBrandById(rs.getInt("fk_brand_model")));
                 
             }
         } catch (SQLException e) {

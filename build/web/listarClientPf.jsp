@@ -44,8 +44,8 @@
                     <td><c:out value="${user.address.numberAddress}" /></td>
                     <td><c:out value="${user.address.complement}" /></td>
                     <td><c:out value="${user.address.district}" /></td>
-                    <td><c:out value="${user.city.name}" /></td>
-                     <td><c:out value="${user.uf.name}" /></td>
+                    <td><c:out value="${user.address.city.name}" /></td>
+                     <td><c:out value="${user.address.city.uf.name}" /></td>
                     <td><c:out value="${user.contact.telephone}" /></td>
                      <td ><a  href="ClientPfController?action=edit&id=<c:out value="${user.id}"/>" >Update</a></td>
                     <td><a href="ClientPfController?action=delete&id=<c:out value="${user.id}"/>">Delete</a></td>

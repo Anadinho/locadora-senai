@@ -15,8 +15,7 @@ public class ClientPj extends Client {
     private String razaoSocial;
     private Address address;
     private Contact contact;
-    private Uf uf;
-    private City city;
+
 
     /**
      * @return the id
@@ -88,32 +87,6 @@ public class ClientPj extends Client {
         this.contact = contact;
     }
 
-    /**
-     * @return the uf
-     */
-    public Uf getUf() {
-        return uf;
-    }
 
-    /**
-     * @param uf the uf to set
-     */
-    public void setUf(Uf uf) {
-        this.uf = uf;
-    }
-
-    /**
-     * @return the city
-     */
-    public City getCity() {
-        return city;
-    }
-
-    /**
-     * @param city the city to set
-     */
-    public void setCity(City city) {
-        this.city = city;
-    }
 
 }

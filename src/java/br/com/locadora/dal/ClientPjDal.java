@@ -37,8 +37,6 @@ public class ClientPjDal {
 "	join address a on a.id =c.fk_address_client";
                     AddressDal address = new AddressDal();
                     ContactDal contact = new ContactDal();
-                    UfDal uf = new UfDal();
-                    CityDal city = new CityDal();
                      
 
                             
@@ -49,14 +47,9 @@ public class ClientPjDal {
                     ClientPj pj = new ClientPj();
                     pj.setId(rs.getInt("id"));
                     pj.setFantasyName(rs.getString("fantasyName"));
-                    pj.setRazaoSocial(rs.getString("razaoSocial"));  
-                    
-                    pj.setAddress(address.getAddressById(rs.getInt("fk_address_client")));
-                    
+                    pj.setRazaoSocial(rs.getString("razaoSocial"));                  
+                    pj.setAddress(address.getAddressById(rs.getInt("fk_address_client")));                    
                     pj.setContact(contact.getContactById(rs.getInt("fk_contact_client")));
-                    
-                    pj.setUf(uf.getUfById(rs.getInt("fk_uf_address")));
-                    pj.setCity(city.getCityById(rs.getInt("fk_city_address")));
                     
                     clientPjs.add(pj);
                 }
@@ -69,16 +62,21 @@ public class ClientPjDal {
          
  public ClientPj getClientPjById(int id) {
         ClientPj clientPj = new ClientPj();
+        AddressDal address = new AddressDal();
+        ContactDal contact = new ContactDal();
         try {
             PreparedStatement preparedStatement = conexao.
-             prepareStatement("select * from clientPj where id=?");
+            prepareStatement("select * from clientPj where id=?");
             preparedStatement.setInt(1,id);
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
                 clientPj.setId(rs.getInt("id"));
                 clientPj.setFantasyName(rs.getString("fantasyName"));
-                clientPj.setRazaoSocial(rs.getString("razaoSocial"));                
+                clientPj.setRazaoSocial(rs.getString("razaoSocial"));  
+                clientPj.setAddress(address.getAddressById(rs.getInt("fk_address_client")));                    
+                clientPj.setContact(contact.getContactById(rs.getInt("fk_contact_client")));
+                    
             }
         } catch (SQLException e) {
             e.printStackTrace();
