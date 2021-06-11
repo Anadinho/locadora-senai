@@ -33,10 +33,8 @@ public class ClientPjDal {
          public List<ClientPj> getAllClientPj() {
         List<ClientPj> clientPjs = new ArrayList<ClientPj>();
             String sql = "select * \n" +
-"	from clientPj pj join client c on pj.fk_client_pj =c.id\n" +
-"	join address a on a.id =c.fk_address_client";
-                    AddressDal address = new AddressDal();
-                    ContactDal contact = new ContactDal();
+"	from clientPj pj ";
+                    ClientDal client = new ClientDal();
                      
 
                             
@@ -45,11 +43,11 @@ public class ClientPjDal {
                 ResultSet rs = statement.executeQuery(sql);
                 while (rs.next()) {
                     ClientPj pj = new ClientPj();
+                    pj.setCnpj(rs.getString("cnpj"));
                     pj.setId(rs.getInt("id"));
                     pj.setFantasyName(rs.getString("fantasyName"));
                     pj.setRazaoSocial(rs.getString("razaoSocial"));                  
-                    pj.setAddress(address.getAddressById(rs.getInt("fk_address_client")));                    
-                    pj.setContact(contact.getContactById(rs.getInt("fk_contact_client")));
+                    pj.setClient(client.getClientById(rs.getInt("fk_client_pj")));    
                     
                     clientPjs.add(pj);
                 }
@@ -60,29 +58,29 @@ public class ClientPjDal {
             return clientPjs;
     }
          
- public ClientPj getClientPjById(int id) {
-        ClientPj clientPj = new ClientPj();
-        AddressDal address = new AddressDal();
-        ContactDal contact = new ContactDal();
+ public ClientPj getClientPjById(int fk_client_pj) {
+        ClientPj pj = new ClientPj();
+        ClientDal client = new ClientDal();
+
         try {
             PreparedStatement preparedStatement = conexao.
-            prepareStatement("select * from clientPj where id=?");
-            preparedStatement.setInt(1,id);
+            prepareStatement("select * from clientPj where fk_client_pj=?");
+            preparedStatement.setInt(1,fk_client_pj);
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
-                clientPj.setId(rs.getInt("id"));
-                clientPj.setFantasyName(rs.getString("fantasyName"));
-                clientPj.setRazaoSocial(rs.getString("razaoSocial"));  
-                clientPj.setAddress(address.getAddressById(rs.getInt("fk_address_client")));                    
-                clientPj.setContact(contact.getContactById(rs.getInt("fk_contact_client")));
+                    pj.setCnpj(rs.getString("cnpj"));
+                    pj.setId(rs.getInt("id"));
+                    pj.setFantasyName(rs.getString("fantasyName"));
+                    pj.setRazaoSocial(rs.getString("razaoSocial"));                  
+                    pj.setClient(client.getClientById(rs.getInt("fk_client_pj")));    
                     
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return clientPj;
+        return pj;
     }
     
 }

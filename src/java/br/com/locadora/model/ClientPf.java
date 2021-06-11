@@ -9,12 +9,46 @@ package br.com.locadora.model;
  *
  * @author suporte
  */
-public class ClientPf  extends Client{
+public class ClientPf{
+
+
+
+    private String cpf;
     private int id;
     private String identity;
     private String name;
-    private Address address;
-    private Contact contact;
+    private Client client;
+    
+    
+    
+    /**
+     * @return the cpf
+     */
+    public String getCpf() {
+        return cpf;
+    }
+    
+        /**
+     * @return the client
+     */
+    public Client getClient() {
+        return client;
+    }
+
+    /**
+     * @param client the client to set
+     */
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    /**
+     * @param cpf the cpf to set
+     */
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    
     /**
      * @return the id
      */
@@ -57,34 +91,6 @@ public class ClientPf  extends Client{
         this.name = name;
     }
 
-
-    /**
-     * @return the address
-     */
-    public Address getAddress() {
-        return address;
-    }
-
-    /**
-     * @param address the address to set
-     */
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    /**
-     * @return the contact
-     */
-    public Contact getContact() {
-        return contact;
-    }
-
-    /**
-     * @param contact the contact to set
-     */
-    public void setContact(Contact contact) {
-        this.contact = contact;
-    }
 
     
 }

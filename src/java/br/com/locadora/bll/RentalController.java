@@ -5,8 +5,8 @@
  */
 package br.com.locadora.bll;
 
-import br.com.locadora.dal.CityDal;
-import br.com.locadora.dal.ClientDal;
+import br.com.locadora.dal.AddressDal;
+import br.com.locadora.dal.RentalDal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -20,17 +20,18 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author suporte
  */
-@WebServlet(name = "ClientController", urlPatterns = {"/ClientController"})
-public class ClientController extends HttpServlet {
-     private static String INSERT_OR_EDIT = "/cadastroClient.jsp";
-    private static String EDIT = "/editarClient.jsp";
-    private static String LIST_USER = "/listarClient.jsp";
+@WebServlet(name = "RentalController", urlPatterns = {"/RentalController"})
+public class RentalController extends HttpServlet {
     
-    private ClientDal dal;
+        private static String INSERT_OR_EDIT = "/cadastroRental.jsp";
+    private static String EDIT = "/editarRental.jsp";
+    private static String LIST_USER = "/listarRental.jsp";
     
-        public ClientController() {
+    private RentalDal dal;
+    
+        public RentalController() {
         super();
-        dal = new ClientDal();
+        dal = new RentalDal();
     }
 
     /**
@@ -50,10 +51,10 @@ public class ClientController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ClientController</title>");            
+            out.println("<title>Servlet RentalController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ClientController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RentalController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -73,13 +74,10 @@ public class ClientController extends HttpServlet {
             throws ServletException, IOException {
              String forward="";
             String action = request.getParameter("action");
-            if(action.equalsIgnoreCase("listarClient")){
+            if(action.equalsIgnoreCase("listarRental")){
                  forward = LIST_USER;
-                 request.setAttribute("clients", dal.getAllClient());                
-             
-        }else  if(action.equalsIgnoreCase("cadastrarClient")){
-             forward = INSERT_OR_EDIT;
-        } 
+                 request.setAttribute("rentals", dal.getAllRental());
+        }
         
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);

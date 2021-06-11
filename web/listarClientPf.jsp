@@ -22,6 +22,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>CPF</th>
                 <th>identidade</th>
                 <th>Nome</th>
                 <th>Logradouro</th>
@@ -38,15 +39,16 @@
             <c:forEach items="${clientPfs}" var="user">
                 <tr >
                     <td><c:out value="${user.id}" /></td>
+                    <td><c:out value="${user.cpf}" /></td>
                     <td><c:out value="${user.identity}" /></td>
                     <td><c:out value="${user.name}" /></td>
-                    <td><c:out value="${user.address.logradouro}" /></td>
-                    <td><c:out value="${user.address.numberAddress}" /></td>
-                    <td><c:out value="${user.address.complement}" /></td>
-                    <td><c:out value="${user.address.district}" /></td>
-                    <td><c:out value="${user.address.city.name}" /></td>
-                     <td><c:out value="${user.address.city.uf.name}" /></td>
-                    <td><c:out value="${user.contact.telephone}" /></td>
+                    <td><c:out value="${user.client.address.logradouro}" /></td>
+                    <td><c:out value="${user.client.address.numberAddress}" /></td>
+                    <td><c:out value="${user.client.address.complement}" /></td>
+                    <td><c:out value="${user.client.address.district}" /></td>
+                    <td><c:out value="${user.client.address.city.name}" /></td>
+                     <td><c:out value="${user.client.address.city.uf.name}" /></td>
+                    <td><c:out value="${user.client.contact.telephone}" /></td>
                      <td ><a  href="ClientPfController?action=edit&id=<c:out value="${user.id}"/>" >Update</a></td>
                     <td><a href="ClientPfController?action=delete&id=<c:out value="${user.id}"/>">Delete</a></td>
                 </tr>

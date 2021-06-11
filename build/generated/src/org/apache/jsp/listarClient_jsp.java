@@ -76,6 +76,7 @@ public final class listarClient_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                <th>Id</th>\n");
       out.write("                <th>Logradouro</th>\n");
       out.write("                <th>Telefone</th>\n");
+      out.write("\n");
       out.write("                <th colspan=2 >Action</th>\n");
       out.write("            </tr>\n");
       out.write("        </thead>\n");
@@ -134,6 +135,7 @@ public final class listarClient_jsp extends org.apache.jasper.runtime.HttpJspBas
           if (_jspx_meth_c_out_2((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
           out.write("</td>\n");
+          out.write("                    \n");
           out.write("                     <td ><a  href=\"ClientController?action=edit&id=");
           if (_jspx_meth_c_out_3((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
@@ -189,7 +191,7 @@ public final class listarClient_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_1.setPageContext(_jspx_page_context);
     _jspx_th_c_out_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_out_1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.address.logradouro}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.address.cep}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_1 = _jspx_th_c_out_1.doStartTag();
     if (_jspx_th_c_out_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_1);

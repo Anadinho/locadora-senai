@@ -6,9 +6,19 @@
 package br.com.locadora.bll;
 
 import br.com.locadora.dal.AddressDal;
+import br.com.locadora.dal.CityDal;
+import br.com.locadora.dal.ClientDal;
 import br.com.locadora.dal.ClientPfDal;
+import br.com.locadora.dal.ContactDal;
+import br.com.locadora.model.Address;
+import br.com.locadora.model.Client;
+import br.com.locadora.model.ClientPf;
+import br.com.locadora.model.Contact;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,11 +37,24 @@ public class ClientPfController extends HttpServlet {
     private static String LIST_USER = "/listarClientPf.jsp";
     
     private ClientPfDal dal;
+    private ContactDal dalContact;
+    private AddressDal dalAddress;
+    private CityDal dalCity;
+    private ClientDal dalClient;
+    
+    
+    
     
         public ClientPfController() {
         super();
         dal = new ClientPfDal();
+        dalContact=new ContactDal();
+        dalAddress= new AddressDal();
+        dalCity=new CityDal();
+        dalClient= new ClientDal();
     }
+        
+  
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -93,6 +116,39 @@ public class ClientPfController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+         Contact contact = new Contact();
+         Contact newContact = new Contact();        
+         contact.setEmail(request.getParameter("email"));
+         contact.setTelephone(request.getParameter("telephone")); 
+          newContact=dalContact.addContact(contact);
+          
+          Address address = new Address();
+          Address newAddress = new Address();          
+          address.setCep(request.getParameter("cep"));
+          address.setComplement(request.getParameter("complement"));
+          address.setDistrict(request.getParameter("district"));          
+          address.setCity(dalCity.getCityById(Integer.parseInt(request.getParameter("city"))));
+          newAddress=dalAddress.addAddress(address);
+          
+          Client client = new Client();
+          Client newClient= new Client();
+          client.setContact(newContact);
+          client.setAddress(newAddress);
+          newClient=dalClient.addClient(client);
+          
+          ClientPf clientPf = new ClientPf();
+          clientPf.setCpf(request.getParameter("cpf"));
+         clientPf.setIdentity(request.getParameter("identity"));
+         clientPf.setName(request.getParameter("name"));
+         clientPf.setClient(newClient);
+         dal.addClientPf(clientPf);         
+        
+        RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
+        request.setAttribute("clientPfs", dal.getAllClientPf());
+        view.forward(request, response);       
+        
+        processRequest(request, response);
 
     }
 

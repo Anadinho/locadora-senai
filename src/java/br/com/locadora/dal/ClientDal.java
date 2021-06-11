@@ -25,6 +25,37 @@ public class ClientDal {
         public ClientDal() {
         conexao = Conexao.getConexao();
     }
+        
+        
+        
+        
+      public Client addClient(Client client) {
+        String sql = "INSERT INTO senai_locadora_pi3.client (fk_address_client,fk_contact_client)\n" +
+"	VALUES (?,?);";
+        try {
+            PreparedStatement preparedStatement = conexao
+                    .prepareStatement(sql);
+            // Parameters start with 1        
+            preparedStatement.setInt(1, client.getAddress().getId());
+             preparedStatement.setInt(1, client.getContact().getId());
+            preparedStatement.executeUpdate();
+            
+            preparedStatement = conexao.
+            prepareStatement("Select LAST_INSERT_ID() as ultimoId;");
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                client.setId(rs.getInt("ultimoId"));                
+            }
+            
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return client;
+    }
+        
+        
     
              public List<Client> getAllClient() {
         List<Client> clients = new ArrayList<Client>();
@@ -50,6 +81,8 @@ public class ClientDal {
          
  public Client getClientById(int id) {
         Client client = new Client();
+        AddressDal address = new AddressDal();
+        ContactDal contact = new ContactDal();   
         try {
             PreparedStatement preparedStatement = conexao.
                     prepareStatement("select * from client where id=?");
@@ -57,7 +90,9 @@ public class ClientDal {
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
-                client.setId(rs.getInt("id"));                
+                client.setId(rs.getInt("id"));    
+                client.setAddress(address.getAddressById(rs.getInt("fk_address_client")));
+                client.setContact(contact.getContactById(rs.getInt("fk_contact_client")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

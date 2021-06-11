@@ -27,6 +27,33 @@ public class ContactDal {
     }
         
         
+        
+         public Contact addContact(Contact contact) {
+        String sql = "INSERT INTO contact (email, telephone)\n" +
+"	VALUES (?, ?);";
+        try {
+            PreparedStatement preparedStatement = conexao
+                    .prepareStatement(sql);
+            // Parameters start with 1        
+            preparedStatement.setString(1, contact.getEmail());
+            preparedStatement.setString(2, contact.getTelephone());
+            preparedStatement.executeUpdate();
+            
+            preparedStatement = conexao.
+            prepareStatement("Select LAST_INSERT_ID() as ultimoId;");
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                contact.setId(rs.getInt("ultimoId"));                
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return contact;
+    }
+        
+        
          public List<Contact> getAllContact() {
         List<Contact> contacts = new ArrayList<Contact>();
             String sql = "select * from contact";

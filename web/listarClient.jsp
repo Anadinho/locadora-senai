@@ -24,6 +24,7 @@
                 <th>Id</th>
                 <th>Logradouro</th>
                 <th>Telefone</th>
+
                 <th colspan=2 >Action</th>
             </tr>
         </thead>
@@ -31,8 +32,9 @@
             <c:forEach items="${clients}" var="user">
                 <tr >
                     <td><c:out value="${user.id}" /></td>
-                    <td><c:out value="${user.address.logradouro}" /></td>
+                    <td><c:out value="${user.address.cep}" /></td>
                     <td><c:out value="${user.contact.telephone}" /></td>
+                    
                      <td ><a  href="ClientController?action=edit&id=<c:out value="${user.id}"/>" >Update</a></td>
                     <td><a href="ClientController?action=delete&id=<c:out value="${user.id}"/>">Delete</a></td>
                 </tr>

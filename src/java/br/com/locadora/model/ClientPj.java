@@ -10,11 +10,11 @@ package br.com.locadora.model;
  * @author suporte
  */
 public class ClientPj extends Client {
+    private String cnpj;
     private int id;
     private String fantasyName;
     private String razaoSocial;
-    private Address address;
-    private Contact contact;
+    private Client client;
 
 
     /**
@@ -22,6 +22,21 @@ public class ClientPj extends Client {
      */
     public int getId() {
         return id;
+    }
+    
+    
+    /**
+     * @return the client
+     */
+    public Client getClient() {
+        return client;
+    }
+
+    /**
+     * @param client the client to set
+     */
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     /**
@@ -60,32 +75,19 @@ public class ClientPj extends Client {
     }
 
     /**
-     * @return the address
+     * @return the cnpj
      */
-    public Address getAddress() {
-        return address;
+    public String getCnpj() {
+        return cnpj;
     }
 
     /**
-     * @param address the address to set
+     * @param cnpj the cnpj to set
      */
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
-    /**
-     * @return the contact
-     */
-    public Contact getContact() {
-        return contact;
-    }
-
-    /**
-     * @param contact the contact to set
-     */
-    public void setContact(Contact contact) {
-        this.contact = contact;
-    }
 
 
 

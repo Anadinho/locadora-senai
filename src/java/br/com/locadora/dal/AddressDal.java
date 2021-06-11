@@ -7,6 +7,7 @@ package br.com.locadora.dal;
 
 import br.com.locadora.model.Address;
 import br.com.locadora.model.City;
+import br.com.locadora.model.Contact;
 import br.com.locadora.model.Uf;
 import br.com.locadora.util.Conexao;
 import java.sql.Connection;
@@ -26,6 +27,38 @@ public class AddressDal {
         
         public AddressDal() {
         conexao = Conexao.getConexao();
+    }
+        
+        
+        
+                 public Address addAddress(Address address) {
+        String sql = "INSERT INTO senai_locadora_pi3.address (cep, numberAddress, complement, district, fk_city_address, logradouro)\n" +
+"	VALUES(?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement preparedStatement = conexao
+                    .prepareStatement(sql);
+            // Parameters start with 1        
+            preparedStatement.setString(1, address.getCep());
+            preparedStatement.setInt(2, address.getNumberAddress());
+             preparedStatement.setString(3, address.getComplement());
+             preparedStatement.setString(4, address.getDistrict());
+             preparedStatement.setInt(5, address.getCity().getId());
+             preparedStatement.setString(6, address.getLogradouro());
+               
+            preparedStatement.executeUpdate();
+            
+            preparedStatement = conexao.
+            prepareStatement("Select LAST_INSERT_ID() as ultimoId;");
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                address.setId(rs.getInt("ultimoId"));                
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return address;
     }
         
         
