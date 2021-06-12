@@ -17,8 +17,17 @@
          <div >  
             <div>
                 <label>Citys</label>
-                <div>      
-          <table border=1>
+                <div>   
+                    
+                    <select id="dropdown">
+                   <c:forEach items="${citys}" var="user">
+                        <option value="<c:out value='${city}' />"
+                            <c:if test="${param.selectValue == city.id})"> selected </c:if>  >
+                            <c:out value="${user.name}" />
+                        </option>
+                    </c:forEach>
+                    </select>
+<!--          <table border=1>
         <thead>
             <tr>
                 <th>Id</th>
@@ -38,7 +47,7 @@
                 </tr>
             </c:forEach>
         </tbody>
-    </table>
+    </table>-->
        </div>
          </div>
         <button onclick="window.location.href='CityController?action=listarCity'" ></button>

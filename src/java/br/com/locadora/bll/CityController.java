@@ -72,11 +72,13 @@ public class CityController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
              String forward="";
             String action = request.getParameter("action");
             if(action.equalsIgnoreCase("listarCity")){
+                request.setAttribute("citys", dal.getAllCity());
                  forward = LIST_USER;
-                 request.setAttribute("citys", dal.getAllCity());
+                 
         }
         
             RequestDispatcher view = request.getRequestDispatcher(forward);

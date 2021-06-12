@@ -11,6 +11,7 @@ import br.com.locadora.dal.ClientDal;
 import br.com.locadora.dal.ClientPfDal;
 import br.com.locadora.dal.ContactDal;
 import br.com.locadora.model.Address;
+import br.com.locadora.model.City;
 import br.com.locadora.model.Client;
 import br.com.locadora.model.ClientPf;
 import br.com.locadora.model.Contact;
@@ -34,7 +35,8 @@ import javax.servlet.http.HttpServletResponse;
 public class ClientPfController extends HttpServlet {
         private static String INSERT_OR_EDIT = "/cadastroClientPf.jsp";
     private static String EDIT = "/editarClientPf.jsp";
-    private static String LIST_USER = "/listarClientPf.jsp";
+//    private static String LIST_USER = "/listarClientPf.jsp";
+    private static String LIST_USER = "/cadastrarClient.jsp";
     
     private ClientPfDal dal;
     private ContactDal dalContact;
@@ -96,9 +98,12 @@ public class ClientPfController extends HttpServlet {
             throws ServletException, IOException {
              String forward="";
             String action = request.getParameter("action");
+            
             if(action.equalsIgnoreCase("listarClientPf")){
                  forward = LIST_USER;
                  request.setAttribute("clientPfs", dal.getAllClientPf());
+                 request.setAttribute("citys", dal.getAllCity());     
+                  
         }
         
             RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -116,33 +121,35 @@ public class ClientPfController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-         Contact contact = new Contact();
-         Contact newContact = new Contact();        
-         contact.setEmail(request.getParameter("email"));
-         contact.setTelephone(request.getParameter("telephone")); 
-          newContact=dalContact.addContact(contact);
-          
-          Address address = new Address();
-          Address newAddress = new Address();          
-          address.setCep(request.getParameter("cep"));
-          address.setComplement(request.getParameter("complement"));
-          address.setDistrict(request.getParameter("district"));          
-          address.setCity(dalCity.getCityById(Integer.parseInt(request.getParameter("city"))));
-          newAddress=dalAddress.addAddress(address);
-          
-          Client client = new Client();
-          Client newClient= new Client();
-          client.setContact(newContact);
-          client.setAddress(newAddress);
-          newClient=dalClient.addClient(client);
-          
-          ClientPf clientPf = new ClientPf();
-          clientPf.setCpf(request.getParameter("cpf"));
-         clientPf.setIdentity(request.getParameter("identity"));
-         clientPf.setName(request.getParameter("name"));
-         clientPf.setClient(newClient);
-         dal.addClientPf(clientPf);         
+            Contact contact = new Contact();
+            Contact newContact = new Contact();        
+            contact.setEmail(request.getParameter("email"));
+            contact.setTelephone(request.getParameter("telephone")); 
+            newContact=dalContact.addContact(contact);
+
+            Address address = new Address();
+            Address newAddress = new Address();          
+            address.setCep(request.getParameter("cep"));
+            address.setComplement(request.getParameter("complement"));
+            address.setDistrict(request.getParameter("district"));
+            address.setLogradouro(request.getParameter("logradouro"));
+            address.setCity(dalCity.getCityById(Integer.parseInt(request.getParameter("city"))));
+            newAddress=dalAddress.addAddress(address);
+
+            Client client = new Client();
+            Client newClient= new Client();
+            client.setContact(newContact);
+            client.setAddress(newAddress);
+            newClient=dalClient.addClient(client);
+
+            ClientPf clientPf = new ClientPf();
+            clientPf.setCpf(request.getParameter("cpf"));
+            clientPf.setIdentity(request.getParameter("identity"));
+            clientPf.setName(request.getParameter("name"));
+            clientPf.setClient(newClient);
+            dal.addClientPf(clientPf);   
+                 
+         
         
         RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
         request.setAttribute("clientPfs", dal.getAllClientPf());

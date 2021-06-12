@@ -10,8 +10,26 @@ package br.com.locadora.model;
  * @author suporte
  */
 public class Uf {
+
+
     private int id;
     private String name;
+    private String uf;
+    
+    
+        /**
+     * @return the uf
+     */
+    public String getUf() {
+        return uf;
+    }
+
+    /**
+     * @param uf the uf to set
+     */
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
 
     /**
      * @return the id

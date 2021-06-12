@@ -29,8 +29,7 @@ public class ContactDal {
         
         
          public Contact addContact(Contact contact) {
-        String sql = "INSERT INTO contact (email, telephone)\n" +
-"	VALUES (?, ?);";
+        String sql = "INSERT INTO contact (email, telephone)VALUES (?, ?);";
         try {
             PreparedStatement preparedStatement = conexao
                     .prepareStatement(sql);

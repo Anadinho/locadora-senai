@@ -76,7 +76,9 @@ public class VehicleController extends HttpServlet {
             if(action.equalsIgnoreCase("listarVehicle")){
                  forward = LIST_USER;
                  request.setAttribute("vehicles", dal.getAllVehicle());
-        }
+        }else  if(action.equalsIgnoreCase("cadastrarVehicle")){
+                    forward = INSERT_OR_EDIT;
+        } 
         
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);

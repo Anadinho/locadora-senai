@@ -37,7 +37,7 @@ public class ClientDal {
                     .prepareStatement(sql);
             // Parameters start with 1        
             preparedStatement.setInt(1, client.getAddress().getId());
-             preparedStatement.setInt(1, client.getContact().getId());
+             preparedStatement.setInt(2, client.getContact().getId());
             preparedStatement.executeUpdate();
             
             preparedStatement = conexao.

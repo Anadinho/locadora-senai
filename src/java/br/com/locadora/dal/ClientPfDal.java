@@ -6,6 +6,7 @@
 package br.com.locadora.dal;
 
 import br.com.locadora.model.Address;
+import br.com.locadora.model.City;
 import br.com.locadora.model.ClientPf;
 import br.com.locadora.util.Conexao;
 import java.sql.Connection;
@@ -54,9 +55,7 @@ public class ClientPfDal {
             String sql = "select * \n" +
 "	from clientPf pf ;";
                     ClientDal client = new ClientDal();
-                     
-
-                            
+                                                 
             try {
                 Statement statement = conexao.createStatement();
                 ResultSet rs = statement.executeQuery(sql);
@@ -97,6 +96,28 @@ public class ClientPfDal {
         }
 
         return clientPf;
+    }
+
+         public List<City> getAllCity() {
+        List<City> citys = new ArrayList<City>();
+            String sql = "select * from city";
+                      UfDal uf = new UfDal();
+                            
+            try {
+                Statement statement = conexao.createStatement();
+                ResultSet rs = statement.executeQuery(sql);
+                while (rs.next()) {
+                   City city = new City();
+                    city.setId(rs.getInt("id"));
+                    city.setName(rs.getString("name"));
+                    city.setUf(uf.getUfById(rs.getInt("fk_uf_city")));
+                    citys.add(city);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            return citys;
     }
     
 }

@@ -38,6 +38,7 @@ public class UfDal {
                    Uf uf = new Uf();
                     uf.setId(rs.getInt("id"));
                     uf.setName(rs.getString("name"));
+                    uf.setUf(rs.getString("uf"));
                     ufs.add(uf);
                 }
             } catch (SQLException e) {
@@ -58,6 +59,7 @@ public class UfDal {
             if (rs.next()) {
                 uf.setId(rs.getInt("id"));
                 uf.setName(rs.getString("name"));
+                uf.setUf(rs.getString("uf"));
                 
             }
         } catch (SQLException e) {

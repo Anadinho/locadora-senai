@@ -29,6 +29,42 @@ public class VehicleDal {
     }
         
         
+              public void addVehicle(Vehicle vehicle) {
+        String sql = "INSERT INTO senai_locadora_pi3.vehicle (licensePlate, fk_model_vehicle, renavam, fk_category_vehicle, buyPrice, salePrice, numberPassengers, yearFabrication, yearModel, typeFuel, mileage, fk_type_vehicle, fk_situation_vehicle)\n" +
+"	VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,? ,? )";
+        try {
+            PreparedStatement preparedStatement = conexao
+                    .prepareStatement(sql);
+            // Parameters start with 1        
+            preparedStatement.setString(1, vehicle.getLicensePlate());
+            
+            preparedStatement.setString(3, vehicle.getModel());
+            
+            preparedStatement.setInt(2, vehicle.getRenavam());
+            
+            preparedStatement.setString(3, vehicle.getCategory());
+            
+             preparedStatement.setDouble(2, vehicle.getBuyPrice());
+             preparedStatement.setDouble(2, vehicle.getSalePrice());
+             preparedStatement.setInt(2, vehicle.getNumberPassengers());
+             preparedStatement.setString(3, vehicle.getYearFabrication());
+             preparedStatement.setString(3, vehicle.getYearModel());
+             preparedStatement.setString(3, vehicle.getTypeFuel());
+             preparedStatement.setInt(2, vehicle.getMileage());
+             
+             preparedStatement.setString(3, vehicle.getTypeFuel());
+             
+             preparedStatement.setString(3, vehicle.getSituationVehicle());
+             
+              
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+        
+        
          public List<Vehicle> getAllVehicle() {
         List<Vehicle> vehicles = new ArrayList<Vehicle>();
             String sql = "select *\n" +

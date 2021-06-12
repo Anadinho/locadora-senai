@@ -77,9 +77,7 @@ public class ClientController extends HttpServlet {
                  forward = LIST_USER;
                  request.setAttribute("clients", dal.getAllClient());                
              
-        }else  if(action.equalsIgnoreCase("cadastrarClient")){
-             forward = INSERT_OR_EDIT;
-        } 
+        }
         
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);

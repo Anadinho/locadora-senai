@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/src/java/br/com/locadora/util/Conexao.java</file>
+            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/src/java/br/com/locadora/dal/ContactDal.java</file>
             <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/src/java/br/com/locadora/bll/ClientPfController.java</file>
-            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/src/java/br/com/locadora/dal/ClientPjDal.java</file>
+            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/src/java/br/com/locadora/model/Contact.java</file>
             <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/src/java/br/com/locadora/dal/ClientPfDal.java</file>
             <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/web/cadastrarClient.jsp</file>
         </group>
