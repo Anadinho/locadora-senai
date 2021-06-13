@@ -63,7 +63,7 @@
       </form>
        </div>
 
-        <button onclick="window.location.href='ClientPfController?action=cadastrarClientPf'" ></button>
+        <!--<button onclick="window.location.href='ClientPfController?action=cadastrarClientPf'" ></button>-->
 
     </body>
 </html>

@@ -32,7 +32,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "VehicleController", urlPatterns = {"/VehicleController"})
 public class VehicleController extends HttpServlet {
     
-        private static String INSERT_OR_EDIT = "/cadastroVehicle.jsp";
+        private static String INSERT_OR_EDIT = "./veiculo/cadastrar.jsp";
     private static String EDIT = "/editarVehicle.jsp";
     private static String LIST_USER = "/listarVehicle.jsp";
     
@@ -93,6 +93,7 @@ public class VehicleController extends HttpServlet {
             if(action.equalsIgnoreCase("listarVehicle")){
                  forward = LIST_USER;
                  request.setAttribute("vehicles", dal.getAllVehicle());
+                 
         }else  if(action.equalsIgnoreCase("cadastrarVehicle")){
              request.setAttribute("models", dalModel.getAllModel());
              request.setAttribute("categorys", dalCategory.getAllCategory());
@@ -115,12 +116,7 @@ public class VehicleController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-            
-        
-        
-        
+            throws ServletException, IOException {        
         Vehicle vehicle = new Vehicle();
         Vehicle newVehicle= new Vehicle();
         vehicle.setLicensePlate(request.getParameter("licensePlate"));
