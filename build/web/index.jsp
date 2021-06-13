@@ -50,10 +50,8 @@
                   <li>
                     Locação
                     <ul class="dropdown">
-                        <li><a>Cadastrar</a></li>
-                        <li><a>Consultar</a></li>
-                        <li><a>Editar</a></li>
-                        <li><a>Excluir</a></li>
+                        <li><a href="locadora/cadastrar.jsp">Cadastrar</a></li>
+                        <li><a href="locadora/consultar.jsp">Consultar</a></li>
                     </ul>
                 </li>
             </ul> 

@@ -6,7 +6,16 @@
 package br.com.locadora.bll;
 
 import br.com.locadora.dal.AddressDal;
+import br.com.locadora.dal.CategoryDal;
+import br.com.locadora.dal.ModelDal;
+import br.com.locadora.dal.SituationVehicleDal;
 import br.com.locadora.dal.VehicleDal;
+import br.com.locadora.dal.VehicleTypeDal;
+import br.com.locadora.model.Category;
+import br.com.locadora.model.Model;
+import br.com.locadora.model.SituationVehicle;
+import br.com.locadora.model.Vehicle;
+import br.com.locadora.model.VehicleType;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -28,10 +37,18 @@ public class VehicleController extends HttpServlet {
     private static String LIST_USER = "/listarVehicle.jsp";
     
     private VehicleDal dal;
+    private ModelDal dalModel;
+    private CategoryDal dalCategory;
+    private VehicleTypeDal dalVehicleType;
+    private SituationVehicleDal dalSituationVehicle;
     
         public VehicleController() {
         super();
         dal = new VehicleDal();
+        dalModel= new ModelDal();
+        dalCategory = new CategoryDal();
+        dalVehicleType=new VehicleTypeDal();
+        dalSituationVehicle= new SituationVehicleDal();
     }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -77,7 +94,11 @@ public class VehicleController extends HttpServlet {
                  forward = LIST_USER;
                  request.setAttribute("vehicles", dal.getAllVehicle());
         }else  if(action.equalsIgnoreCase("cadastrarVehicle")){
-                    forward = INSERT_OR_EDIT;
+             request.setAttribute("models", dalModel.getAllModel());
+             request.setAttribute("categorys", dalCategory.getAllCategory());
+             request.setAttribute("vehicleTypes", dalVehicleType.getAllVehicleType());
+             request.setAttribute("situationVehicles", dalSituationVehicle.getAllSituationVehicle());
+             forward = INSERT_OR_EDIT;
         } 
         
             RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -95,6 +116,27 @@ public class VehicleController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+            
+        
+        
+        
+        Vehicle vehicle = new Vehicle();
+        Vehicle newVehicle= new Vehicle();
+        vehicle.setId(Integer.parseInt(request.getParameter("id")));
+        vehicle.setModel(dalModel.getModelById(Integer.parseInt(request.getParameter("model"))));
+        vehicle.setRenavam(Integer.parseInt(request.getParameter("renavam")));
+        vehicle.setCategory(dalCategory.getCategoryById(Integer.parseInt(request.getParameter("category"))));
+        vehicle.setBuyPrice(Double.parseDouble(request.getParameter("buyPrice")));
+        vehicle.setSalePrice(Double.parseDouble(request.getParameter("salePrice")));
+        vehicle.setNumberPassengers(Integer.parseInt(request.getParameter("numberPassengers")));
+        vehicle.setYearFabrication(request.getParameter("yearFabrication"));
+        vehicle.setYearModel(request.getParameter("yearModel"));
+        vehicle.setTypeFuel(request.getParameter("typeFuel"));
+        vehicle.setMileage(Integer.parseInt(request.getParameter("mileage")));
+        vehicle.setVehicleType(dalVehicleType.getVehicleTypeById(Integer.parseInt(request.getParameter("vehicleType"))));
+        vehicle.setSituationVehicle(dalSituationVehicle.getSituationVehicleById(Integer.parseInt(request.getParameter("situationVehicle"))));
+        dal.addVehicle(vehicle);
         processRequest(request, response);
     }
 

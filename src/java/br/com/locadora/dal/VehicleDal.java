@@ -36,26 +36,19 @@ public class VehicleDal {
             PreparedStatement preparedStatement = conexao
                     .prepareStatement(sql);
             // Parameters start with 1        
-            preparedStatement.setString(1, vehicle.getLicensePlate());
-            
-            preparedStatement.setString(3, vehicle.getModel());
-            
-            preparedStatement.setInt(2, vehicle.getRenavam());
-            
-            preparedStatement.setString(3, vehicle.getCategory());
-            
-             preparedStatement.setDouble(2, vehicle.getBuyPrice());
-             preparedStatement.setDouble(2, vehicle.getSalePrice());
-             preparedStatement.setInt(2, vehicle.getNumberPassengers());
-             preparedStatement.setString(3, vehicle.getYearFabrication());
-             preparedStatement.setString(3, vehicle.getYearModel());
-             preparedStatement.setString(3, vehicle.getTypeFuel());
-             preparedStatement.setInt(2, vehicle.getMileage());
-             
-             preparedStatement.setString(3, vehicle.getTypeFuel());
-             
-             preparedStatement.setString(3, vehicle.getSituationVehicle());
-             
+             preparedStatement.setString(1, vehicle.getLicensePlate());            
+             preparedStatement.setInt(2, vehicle.getModel().getId());            
+             preparedStatement.setInt(3, vehicle.getRenavam());            
+             preparedStatement.setInt(4, vehicle.getCategory().getId());            
+             preparedStatement.setDouble(5, vehicle.getBuyPrice());
+             preparedStatement.setDouble(6, vehicle.getSalePrice());
+             preparedStatement.setInt(7, vehicle.getNumberPassengers());
+             preparedStatement.setString(8, vehicle.getYearFabrication());
+             preparedStatement.setString(9, vehicle.getYearModel());
+             preparedStatement.setString(10, vehicle.getTypeFuel());
+             preparedStatement.setInt(11, vehicle.getMileage());             
+             preparedStatement.setInt(12, vehicle.getVehicleType().getId());             
+             preparedStatement.setInt(13, vehicle.getSituationVehicle().getId());            
               
             preparedStatement.executeUpdate();
 

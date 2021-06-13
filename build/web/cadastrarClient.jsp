@@ -44,7 +44,7 @@
                 <input  type="text" name="district" value="<c:out value="${clientPf.Address.district}" />"/> <br />         
                 
                 <label>Cidade</label>
-                <select name="city">
+                <select name="city" >
                   <c:forEach items="${citys}" var="city">
                     <option value="${city.id}">
                         ${city.name} -
@@ -63,7 +63,7 @@
       </form>
        </div>
 
-        <button onclick="window.location.href='ClientPfController?action=listarClientPf'" ></button>
+        <button onclick="window.location.href='ClientPfController?action=cadastrarClientPf'" ></button>
 
     </body>
 </html>

@@ -57,7 +57,7 @@
     </table>
        </div>
          </div>
-        <button onclick="window.location.href='ClientPfController?action=listarClientPf'" ></button>
+        <button onclick="window.location.href='ClientPfController?action=cadastrarClientPf'" >Cadastrar</button>
            </div>
     </body>
 </html>

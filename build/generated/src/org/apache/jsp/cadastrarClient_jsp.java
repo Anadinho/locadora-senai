@@ -120,7 +120,7 @@ public final class cadastrarClient_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\"/> <br />         \n");
       out.write("                \n");
       out.write("                <label>Cidade</label>\n");
-      out.write("                <select name=\"city\">\n");
+      out.write("                <select name=\"city\" onclick=\"window.location.href='ClientPfController?action=cadastrarClientPf'\">\n");
       out.write("                  ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
@@ -143,7 +143,7 @@ public final class cadastrarClient_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("      </form>\n");
       out.write("       </div>\n");
       out.write("\n");
-      out.write("        <button onclick=\"window.location.href='ClientPfController?action=listarClientPf'\" ></button>\n");
+      out.write("        <button onclick=\"window.location.href='ClientPfController?action=cadastrarClientPf'\" ></button>\n");
       out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");

@@ -33,10 +33,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ClientPfController", urlPatterns = {"/ClientPfController"})
 public class ClientPfController extends HttpServlet {
-        private static String INSERT_OR_EDIT = "/cadastroClientPf.jsp";
+        private static String INSERT_OR_EDIT = "/cadastrarClient.jsp";
     private static String EDIT = "/editarClientPf.jsp";
-//    private static String LIST_USER = "/listarClientPf.jsp";
-    private static String LIST_USER = "/cadastrarClient.jsp";
+    private static String LIST_USER = "/listarClientPf.jsp";
+//    private static String LIST_USER = "/cadastrarClient.jsp";
     
     private ClientPfDal dal;
     private ContactDal dalContact;
@@ -102,9 +102,13 @@ public class ClientPfController extends HttpServlet {
             if(action.equalsIgnoreCase("listarClientPf")){
                  forward = LIST_USER;
                  request.setAttribute("clientPfs", dal.getAllClientPf());
-                 request.setAttribute("citys", dal.getAllCity());     
+                     
                   
-        }
+        } else  if(action.equalsIgnoreCase("cadastrarClientPf")){
+             request.setAttribute("citys", dal.getAllCity()); 
+             forward = INSERT_OR_EDIT;
+        } 
+        
         
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
@@ -132,6 +136,7 @@ public class ClientPfController extends HttpServlet {
             address.setCep(request.getParameter("cep"));
             address.setComplement(request.getParameter("complement"));
             address.setDistrict(request.getParameter("district"));
+            address.setNumberAddress(Integer.parseInt(request.getParameter("numberAddress")));
             address.setLogradouro(request.getParameter("logradouro"));
             address.setCity(dalCity.getCityById(Integer.parseInt(request.getParameter("city"))));
             newAddress=dalAddress.addAddress(address);
