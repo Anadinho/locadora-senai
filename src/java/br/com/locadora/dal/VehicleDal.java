@@ -50,7 +50,7 @@ public class VehicleDal {
              preparedStatement.setInt(12, vehicle.getVehicleType().getId());             
              preparedStatement.setInt(13, vehicle.getSituationVehicle().getId());            
               
-            preparedStatement.executeUpdate();
+              preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();

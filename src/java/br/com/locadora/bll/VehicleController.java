@@ -123,7 +123,7 @@ public class VehicleController extends HttpServlet {
         
         Vehicle vehicle = new Vehicle();
         Vehicle newVehicle= new Vehicle();
-        vehicle.setId(Integer.parseInt(request.getParameter("id")));
+        vehicle.setLicensePlate(request.getParameter("licensePlate"));
         vehicle.setModel(dalModel.getModelById(Integer.parseInt(request.getParameter("model"))));
         vehicle.setRenavam(Integer.parseInt(request.getParameter("renavam")));
         vehicle.setCategory(dalCategory.getCategoryById(Integer.parseInt(request.getParameter("category"))));
@@ -137,7 +137,13 @@ public class VehicleController extends HttpServlet {
         vehicle.setVehicleType(dalVehicleType.getVehicleTypeById(Integer.parseInt(request.getParameter("vehicleType"))));
         vehicle.setSituationVehicle(dalSituationVehicle.getSituationVehicleById(Integer.parseInt(request.getParameter("situationVehicle"))));
         dal.addVehicle(vehicle);
+
+        RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
+        request.setAttribute("vehicles", dal.getAllVehicle());
+        view.forward(request, response);       
+        
         processRequest(request, response);
+
     }
 
     /**

@@ -18,9 +18,8 @@
             <div>
                 <form method="POST" action='VehicleController' name="frmAddVehicle">
                 
-                
-<!--                 <label>Id</label>
-                <input  type="text" name="id" value="<c:out value="${vehicle.name}" />"/> <br />-->
+                <label>Placa do veiculo</label>
+                <input  type="text" name="licensePlate" value="<c:out value="${vehicle.licensePlate}" />"/> <br /> 
                 
                 <label>Modelo</label>
                 <select name="model" >
