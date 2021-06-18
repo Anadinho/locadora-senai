@@ -5,8 +5,17 @@
  */
 package br.com.locadora.bll;
 
+import br.com.locadora.dal.AddressDal;
+import br.com.locadora.dal.CityDal;
+import br.com.locadora.dal.ClientDal;
 import br.com.locadora.dal.ClientPfDal;
 import br.com.locadora.dal.ClientPjDal;
+import br.com.locadora.dal.ContactDal;
+import br.com.locadora.model.Address;
+import br.com.locadora.model.Client;
+import br.com.locadora.model.ClientPf;
+import br.com.locadora.model.ClientPj;
+import br.com.locadora.model.Contact;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -22,15 +31,23 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ClientPjController", urlPatterns = {"/ClientPjController"})
 public class ClientPjController extends HttpServlet {
-        private static String INSERT_OR_EDIT = "/cadastroClientPj.jsp";
+        private static String INSERT_OR_EDIT = "/cadastrarClientPj.jsp";
     private static String EDIT = "/editarClientPj.jsp";
     private static String LIST_USER = "/listarClientPj.jsp";
     
     private ClientPjDal dal;
+    private ContactDal dalContact;
+    private AddressDal dalAddress;
+    private CityDal dalCity;
+    private ClientDal dalClient;
     
         public ClientPjController() {
         super();
         dal = new ClientPjDal();
+        dalContact=new ContactDal();
+        dalAddress= new AddressDal();
+        dalCity=new CityDal();
+        dalClient= new ClientDal();
     }
 
     /**
@@ -76,7 +93,10 @@ public class ClientPjController extends HttpServlet {
             if(action.equalsIgnoreCase("listarClientPj")){
                  forward = LIST_USER;
                  request.setAttribute("clientPjs", dal.getAllClientPj());
-        }
+        } else  if(action.equalsIgnoreCase("cadastrarClientPj")){
+             request.setAttribute("citys", dal.getAllCity()); 
+             forward = INSERT_OR_EDIT;
+        } 
         
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
@@ -93,6 +113,40 @@ public class ClientPjController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            Contact contact = new Contact();
+            Contact newContact = new Contact();        
+            contact.setEmail(request.getParameter("email"));
+            contact.setTelephone(request.getParameter("telephone")); 
+            newContact=dalContact.addContact(contact);
+
+            Address address = new Address();
+            Address newAddress = new Address();          
+            address.setCep(request.getParameter("cep"));
+            address.setComplement(request.getParameter("complement"));
+            address.setDistrict(request.getParameter("district"));
+            address.setNumberAddress(Integer.parseInt(request.getParameter("numberAddress")));
+            address.setLogradouro(request.getParameter("logradouro"));
+            address.setCity(dalCity.getCityById(Integer.parseInt(request.getParameter("city"))));
+            newAddress=dalAddress.addAddress(address);
+
+            Client client = new Client();
+            Client newClient= new Client();
+            client.setContact(newContact);
+            client.setAddress(newAddress);
+            newClient=dalClient.addClient(client);
+            
+            ClientPj clientPj = new ClientPj();
+            clientPj.setCnpj(request.getParameter("cnpj"));
+            clientPj.setFantasyName(request.getParameter("fantasyName"));
+            clientPj.setRazaoSocial(request.getParameter("razaoSocial"));
+            clientPj.setClient(newClient);
+            dal.addClientPj(clientPj);
+            
+            RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
+            request.setAttribute("clientPjs", dal.getAllClientPj());
+            view.forward(request, response);  
+        
+        
         processRequest(request, response);
     }
 

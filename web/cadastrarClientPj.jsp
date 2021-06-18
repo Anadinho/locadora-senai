@@ -16,32 +16,32 @@
     <body>
             <label>Cadastro Cliente Pf</label>  
             <div>
-                <form method="POST" action='ClientPfController' name="frmAddCorrida">
+                <form method="POST" action='ClientPjController' name="frmAddClientPj">
                 
                 
-                 <label>Nome</label>
-                <input  type="text" name="name" value="<c:out value="${clientPf.name}" />"/> <br />
+                 <label>Nome Fantasia</label>
+                <input  type="text" name="fantasyName" value="<c:out value="${clientPj.fantasyName}" />"/> <br />
                 
-                <label>Identidade</label>
-                <input  type="text" name="identity" value="<c:out value="${clientPf.identity}" />"/> <br />
+                <label>Razao Social</label>
+                <input  type="text" name="razaoSocial" value="<c:out value="${clientPj.razaoSocial}" />"/> <br />
                 
-                 <label>cpf</label>
-                <input  type="text" name="cpf" value="<c:out value="${clientPf.cpf}" />"/> <br /> 
+                 <label>cnpj</label>
+                <input  type="text" name="cnpj" value="<c:out value="${clientPj.cnpj}" />"/> <br /> 
                 
                  <label>cep</label>
-                <input  type="text" name="cep" value="<c:out value="${clientPf.Address.name}" />"/> <br /> 
+                <input  type="text" name="cep" value="<c:out value="${clientPj.Address.name}" />"/> <br /> 
                 
                  <label>logradouro</label>
-                <input  type="text" name="logradouro" value="<c:out value="${clientPf.Address.logradouro}" />"/> <br />
+                <input  type="text" name="logradouro" value="<c:out value="${clientPj.Address.logradouro}" />"/> <br />
                 
                  <label>complemento</label>
-                <input  type="text" name="complement" value="<c:out value="${clientPf.Address.complement}" />"/> <br />
+                <input  type="text" name="complement" value="<c:out value="${clientPj.Address.complement}" />"/> <br />
                 
                 <label>Numero</label>
-                <input  type="text" name="numberAddress" value="<c:out value="${clientPf.Address.numberAddress}" />"/> <br />
+                <input  type="text" name="numberAddress" value="<c:out value="${clientPj.Address.numberAddress}" />"/> <br />
                 
                    <label>Bairro</label>
-                <input  type="text" name="district" value="<c:out value="${clientPf.Address.district}" />"/> <br />         
+                <input  type="text" name="district" value="<c:out value="${clientPj.Address.district}" />"/> <br />         
                 
                 <label>Cidade</label>
                 <select name="city" >
@@ -54,16 +54,16 @@
                 </select> <br/>          
                 
                 <label> Email</label>
-                <input  type="text" name="email" value="<c:out value="${ClientPf.contact.telephone}" />"/> <br /> 
+                <input  type="text" name="email" value="<c:out value="${ClientPj.contact.telephone}" />"/> <br /> 
                 
                  <label> Telefone</label>
-                <input  type="text" name="telephone" value="<c:out value="${ClientPf.contact.email}" />"/> <br /> 
+                <input  type="text" name="telephone" value="<c:out value="${ClientPj.contact.email}" />"/> <br /> 
                <button type="submit" value="Submit" > Cadastrar </button>
  
       </form>
        </div>
 
-        <button onclick="window.location.href='ClientPfController?action=cadastrarClientPf'" >Atualizar lista cidade</button>
+        <button onclick="window.location.href='ClientPjController?action=cadastrarClientPj'" >Atualizar lista cidade</button>
 
     </body>
 </html>
