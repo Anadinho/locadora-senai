@@ -14,7 +14,7 @@
         <title>Lista </title>
     </head>
     <body>
-            <label>Cadastro Cliente Pf</label>  
+            <label>Cadastro Cliente Pj</label>  
             <div>
                 <form method="POST" action='ClientPjController' name="frmAddClientPj">
                 

@@ -16,7 +16,7 @@
     <body>
          <div >  
             <div>
-                <label>Clientes Pf</label>
+                <label>Clientes pj</label>
                 <div>      
           <table border=1>
         <thead>

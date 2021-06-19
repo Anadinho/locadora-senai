@@ -63,7 +63,12 @@ public final class cadastrar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>SENAI-PI-LOCADORA</title>\n");
-      out.write("        <link rel=\"stylesheet\" href=\"../style.css\">\n");
+      out.write("      \n");
+      out.write("<!--        <link href=\"../css/style.css\" rel=\"stylesheet\" type=\"text/css\"/>-->\n");
+      out.write("\n");
+      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/css/style.css\"/>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("\n");
@@ -213,10 +218,11 @@ public final class cadastrar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                \n");
       out.write("                 \n");
       out.write("                <button type=\"submit\" value=\"Submit\" class=\"btn\"> Salvar </button>\n");
+      out.write("                <button onclick=\"window.location.href='VehicleController?action=cadastrarVehicle'\" ></button>\n");
       out.write(" \n");
       out.write("      </form>\n");
       out.write("        </div>\n");
-      out.write("                 <button onclick=\"window.location.href='ClientPfController?action=cadastrarClientPf'\" >carregar</button>\n");
+      out.write("                 \n");
       out.write("                \n");
       out.write("\n");
       out.write("\n");

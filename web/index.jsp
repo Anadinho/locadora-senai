@@ -14,7 +14,7 @@
         <title>SENAI-PI-LOCADORA</title>
         <meta name="description" content="Example project demonstrating how to build hover menus in CSS">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
     </head>
     <body class="body">
         <img src="assets/background2.webp" class="img">

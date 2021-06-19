@@ -11,15 +11,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SENAI-PI-LOCADORA</title>
-        <link rel="stylesheet" href="../style.css">
+      
+<!--        <link href="../css/style.css" rel="stylesheet" type="text/css"/>-->
+
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
     </head>
     <body>
 
-        <img src="../assets/background2.webp" class="img blur" >
+        <img src="./assets/background2.webp" class="img blur" >
 
         <nav>
 
-            <a href="../index.jsp"> <img class="home-img" src="../assets/casa.png" height="70px"> </a>
+            <a href="../index.jsp"> <img class="home-img" src="./assets/casa.png" height="70px" > </a>
 
             <ul class="gradient">
 
@@ -28,8 +31,8 @@
                 <li>
                     Veiculo
                     <ul class="dropdown">
-                        <li><a href="cadastrar.jsp">Cadastrar</a></li>
-                        <li><a href="consultar.jsp">Consultar</a></li>
+                        <li><a href="VehicleController?action=cadastrarVehicle">Cadastrar</a></li>
+                        <li><a href="VehicleController?action=listarVehicle">Consultar</a></li>
                         <li><a href="editar.jsp">Editar</a></li>
                         <li><a href="excluir.jsp">Excluir</a></li>
                     </ul>
@@ -138,11 +141,10 @@
                 
                  
                 <button type="submit" value="Submit" class="btn"> Salvar </button>
+                
  
       </form>
-        </div>
-                 <button onclick="window.location.href='ClientPfController?action=cadastrarClientPf'" >carregar</button>
-                
+        </div>               
 
 
         <div class="gradient footer">

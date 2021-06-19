@@ -5,6 +5,8 @@
  */
 package br.com.locadora.dal;
 
+import br.com.locadora.model.City;
+import br.com.locadora.model.ClientPf;
 import br.com.locadora.model.ClientPj;
 import br.com.locadora.model.Driver;
 import br.com.locadora.util.Conexao;
@@ -26,6 +28,31 @@ public class DriverDal {
         
         public DriverDal() {
         conexao = Conexao.getConexao();
+    }
+        
+        
+        public void addDriver(Driver driver) {
+        String sql = "INSERT INTO driver ( cpf, name, identity, cnh, category, cnhValidity, urlCnh, fk_address_driver, fk_contact_driver)\n" +
+"	VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement preparedStatement = conexao
+                    .prepareStatement(sql);
+            // Parameters start with 1        
+            preparedStatement.setString(1, driver.getCpf());
+            preparedStatement.setString(2, driver.getName());
+            preparedStatement.setString(3, driver.getIdentity());
+            preparedStatement.setString(4, driver.getCnh());
+            preparedStatement.setString(5, driver.getCategory());
+            preparedStatement.setDate(6, new java.sql.Date(driver.getCnhValidity().getTime()));
+            preparedStatement.setString(7, driver.getUrlCnh());
+            preparedStatement.setInt(8, driver.getAddress().getId());
+            preparedStatement.setInt(9, driver.getContact().getId());            
+           
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
         
         
@@ -87,6 +114,29 @@ public class DriverDal {
         }
 
         return driver;
+    }
+ 
+ 
+          public List<City> getAllCity() {
+        List<City> citys = new ArrayList<City>();
+            String sql = "select * from city";
+                      UfDal uf = new UfDal();
+                            
+            try {
+                Statement statement = conexao.createStatement();
+                ResultSet rs = statement.executeQuery(sql);
+                while (rs.next()) {
+                   City city = new City();
+                    city.setId(rs.getInt("id"));
+                    city.setName(rs.getString("name"));
+                    city.setUf(uf.getUfById(rs.getInt("fk_uf_city")));
+                    citys.add(city);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            return citys;
     }
     
 }

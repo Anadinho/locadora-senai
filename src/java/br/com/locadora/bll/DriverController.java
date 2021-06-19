@@ -5,10 +5,20 @@
  */
 package br.com.locadora.bll;
 
+import br.com.locadora.dal.AddressDal;
+import br.com.locadora.dal.CityDal;
 import br.com.locadora.dal.ClientPfDal;
+import br.com.locadora.dal.ContactDal;
 import br.com.locadora.dal.DriverDal;
+import br.com.locadora.model.Address;
+import br.com.locadora.model.ClientPf;
+import br.com.locadora.model.Contact;
+import br.com.locadora.model.Driver;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,15 +32,21 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "DriverController", urlPatterns = {"/DriverController"})
 public class DriverController extends HttpServlet {
-            private static String INSERT_OR_EDIT = "/cadastroDriver.jsp";
+            private static String INSERT_OR_EDIT = "/cadastrarDriver.jsp";
     private static String EDIT = "/editarDriver.jsp";
     private static String LIST_USER = "/listarDriver.jsp";
     
     private DriverDal dal;
+    private ContactDal dalContact;
+    private AddressDal dalAddress;
+    private CityDal dalCity;
     
         public DriverController() {
         super();
         dal = new DriverDal();
+        dalContact=new ContactDal();
+        dalAddress= new AddressDal();
+        dalCity=new CityDal();
     }
 
     /**
@@ -76,6 +92,10 @@ public class DriverController extends HttpServlet {
             if(action.equalsIgnoreCase("listarDriver")){
                  forward = LIST_USER;
                  request.setAttribute("drivers", dal.getAllDriver());
+        }else  if(action.equalsIgnoreCase("cadastrarDriver")){
+             request.setAttribute("citys", dal.getAllCity());
+             request.setAttribute("drives", dal.getAllDriver()); 
+             forward = INSERT_OR_EDIT;
         }
         
             RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -93,6 +113,42 @@ public class DriverController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            Contact contact = new Contact();
+            Contact newContact = new Contact();        
+            contact.setEmail(request.getParameter("email"));
+            contact.setTelephone(request.getParameter("telephone")); 
+            newContact=dalContact.addContact(contact);
+
+            Address address = new Address();
+            Address newAddress = new Address();          
+            address.setCep(request.getParameter("cep"));
+            address.setComplement(request.getParameter("complement"));
+            address.setDistrict(request.getParameter("district"));
+            address.setNumberAddress(Integer.parseInt(request.getParameter("numberAddress")));
+            address.setLogradouro(request.getParameter("logradouro"));
+            address.setCity(dalCity.getCityById(Integer.parseInt(request.getParameter("city"))));
+            newAddress=dalAddress.addAddress(address);
+            
+            Driver driver = new Driver();
+            driver.setCpf(request.getParameter("cpf"));
+            driver.setName(request.getParameter("name"));
+            driver.setIdentity(request.getParameter("identity"));
+            driver.setCnh(request.getParameter("cnh"));
+            driver.setCategory(request.getParameter("category"));
+            
+            try {
+            Date cnhValidity = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("cnhValidity"));
+            driver.setCnhValidity(cnhValidity);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            
+            driver.setUrlCnh(request.getParameter("urlCnh"));
+            driver.setAddress(newAddress);
+            driver.setContact(newContact);
+            dal.addDriver(driver); 
+        
+        
         processRequest(request, response);
     }
 

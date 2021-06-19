@@ -10,11 +10,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SENAI-PI-LOCADORA</title>
-        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
     </head>
     <body>
         
-        <img src="../assets/background2.webp" class="img blur" >
+        <img src="${pageContext.request.contextPath}/assets/background2.webp" class="img blur" >
         
         <nav>
             

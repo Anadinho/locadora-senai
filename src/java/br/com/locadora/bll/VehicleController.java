@@ -34,7 +34,7 @@ public class VehicleController extends HttpServlet {
     
     private static String INSERT_OR_EDIT = "./veiculo/cadastrar.jsp";
     private static String EDIT = "/editarVehicle.jsp";
-    private static String LIST_USER = "/listarVehicle.jsp";
+    private static String LIST_USER = "./veiculo/consultar.jsp";
     
     private VehicleDal dal;
     private ModelDal dalModel;
@@ -89,17 +89,20 @@ public class VehicleController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
              String forward="";
+             
+             
             String action = request.getParameter("action");
             if(action.equalsIgnoreCase("listarVehicle")){
-                 forward = LIST_USER;
-                 request.setAttribute("vehicles", dal.getAllVehicle());
+             request.setAttribute("vehicles", dal.getAllVehicle());
+             forward = LIST_USER;
                  
-        }else  if(action.equalsIgnoreCase("cadastrarVehicle")){             
+                 
+        }else  if(action.equalsIgnoreCase("cadastrarVehicle")){
+             forward = INSERT_OR_EDIT;
              request.setAttribute("models", dalModel.getAllModel());
              request.setAttribute("categorys", dalCategory.getAllCategory());
              request.setAttribute("vehicleTypes", dalVehicleType.getAllVehicleType());
              request.setAttribute("situationVehicles", dalSituationVehicle.getAllSituationVehicle());
-             forward = INSERT_OR_EDIT;
         } 
         
             RequestDispatcher view = request.getRequestDispatcher(forward);

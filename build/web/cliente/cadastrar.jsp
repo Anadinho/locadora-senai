@@ -3,7 +3,8 @@
     Created on : 31/05/2021, 20:15:57
     Author     : Cabral
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -67,8 +68,11 @@
               <label class="TopdoForm">CADASTRAR NOVO CLIENTE (PF)</label><br>
               <a href="cadastrarPJ.jsp" class="btn-editar">Cliente (PJ)</a> <br><br>
               
+              
+        
+              
              
-             <input type="text" class="campo"    value="nome" placeholder="Nome" style="width: 425px" title="Digite seu nome.">
+       <input type="text" class="campo"    value="nome" placeholder="Nome" style="width: 425px" title="Digite seu nome.">
        <br> <input type="number" class="campo"   value="rg" placeholder="RG" style="width: 425px" title="Numero do RG.">
        <br> <input type="text" class="campo"     value="cpf" placeholder="CPF/CNPJ" style="width: 425px" title="Numero do CPF.">
        <br> <input type="text" class="campo"     value="cep" placeholder="CEP" style="width: 250px" title="Informe o CEP.">
