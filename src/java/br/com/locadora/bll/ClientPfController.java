@@ -33,7 +33,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ClientPfController", urlPatterns = {"/ClientPfController"})
 public class ClientPfController extends HttpServlet {
-        private static String INSERT_OR_EDIT = "/cadastrarClient.jsp";
+        private static String INSERT_OR_EDIT = "./cliente/cadastrar.jsp";
     private static String EDIT = "/editarClientPf.jsp";
     private static String LIST_USER = "/listarClientPf.jsp";
 //    private static String LIST_USER = "/cadastrarClient.jsp";
@@ -100,8 +100,9 @@ public class ClientPfController extends HttpServlet {
             String action = request.getParameter("action");
             
             if(action.equalsIgnoreCase("listarClientPf")){
-                 forward = LIST_USER;
                  request.setAttribute("clientPfs", dal.getAllClientPf());
+                 forward = LIST_USER;
+                 
                      
                   
         } else  if(action.equalsIgnoreCase("cadastrarClientPf")){

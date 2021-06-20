@@ -40,7 +40,7 @@
                 <li>
                     Cliente
                     <ul class="dropdown">
-                        <li><a href="../cliente/cadastrar.jsp">Cadastrar</a></li>
+                        <li><a href="ClientPfController?action=cadastrarClientPf">Cadastrar</a></li>
                         <li><a href="../cliente/consultar.jsp">Consultar</a></li>
                         <li><a href="../cliente/editar.jsp">Editar</a></li>
                         <li><a href="../cliente/excluir.jsp">Excluir</a></li>
@@ -87,8 +87,7 @@
                     </option>
                   </c:forEach>
                 </select> 
-                <br/>
-                
+                <br/>                
                 
                 <input  type="text" name="renavam" value="<c:out value="${vehicle.renavam}" />" class="campo"  placeholder="Renavam(Numeros)" style="width: 150px" title="Informe o renavam."/>
                 
@@ -115,25 +114,14 @@
                 
                 <input  type="text" name="buyPrice" value="<c:out value="${vehicle.buyPrice}" />" class="campo"  placeholder="Preço de Compra" style="width: 150px" title="Informe preço de compra do veiculo."/> 
                 
-                
                 <input  type="text" name="salePrice" value="<c:out value="${vehicle.salePrice}" />" class="campo"  placeholder="Preço de Venda" style="width: 150px;margin-left:220px" title="Informe o apreço de venda do veiculo."/> <br />
-                
-                
+                             
                 <input  type="text" name="numberPassengers" value="<c:out value="${vehicle.numberPassengers}" />" class="campo"  placeholder="Nro de passageiros" style="width: 250px" title="Informe a quantidade de assentos/passageiros."/> <br />
-                
-               
-                
-                
-                
-                               
-                
-                
+   
                 <input  type="text" name="typeFuel" value="<c:out value="${vehicle.typeFuel}" />" class="campo"  placeholder="Combustivel" style="width: 250px" title="Informe o combustivel utilizado."/> <br />
-                
-                
+                        
                 <input  type="text" name="mileage" value="<c:out value="${vehicle.mileage}" />" class="campo"  placeholder="Quilometragem" style="width: 250px" title="Informe a Quilometragem."/> <br /> 
-                
-                
+                  
                 <select name="situationVehicle" class="campo"   style="width: 250px" title="Informe a disponibilidade do veiculo.">
                   <c:forEach items="${situationVehicles}" var="situationVehicle">
                     <option value="${situationVehicle.id}">
@@ -142,10 +130,6 @@
                   </c:forEach>
                 </select> <br/>
                 
-                
-        
-                
-                 
                 <button type="submit" value="Submit" class="btn"> Salvar </button>
                 
 

@@ -70,7 +70,7 @@
               
          
             <div>
-                <form method="POST" action='ClientPfController' name="frmAddCorrida">
+                <form method="POST" action='ClientPfController' name="frmAddClientPf">
                 
                 
                  
@@ -94,7 +94,7 @@
                 
                 <input  type="text" name="district" value="<c:out value="${clientPf.Address.district}" />" class="campo"     placeholder="Bairro" style="width: 425px" title="Infome seu Bairro."/> <br />         
                 
-<!--                <label>Cidade</label>-->
+
                 <select name="city"  class="campo" style="width: 250px" title="Informe sua Cidade.">
                   <c:forEach items="${citys}" var="city">
                     <option value="${city.id}">

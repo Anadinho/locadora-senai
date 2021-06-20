@@ -191,12 +191,12 @@ public final class cadastrar_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_meth_c_out_9(_jspx_page_context))
         return;
       out.write("\" class=\"campo\"     placeholder=\"Telefone\" style=\"width: 425px\" title=\"Informe seu telefone.\"/> <br /> \n");
-      out.write("               <button type=\"submit\" value=\"Submit\" > Cadastrar </button>\n");
-      out.write(" \n");
+      out.write("               \n");
+      out.write("                <br> <button class=\"btn\" type=\"submit\" value=\"Submit\" > Cadastrar </button>\n");
       out.write("      </form>\n");
       out.write("       </div>\n");
       out.write("\n");
-      out.write("        <button onclick=\"window.location.href='ClientPfController?action=cadastrarClientPf'\" >Atualizar lista cidade</button>      \n");
+      out.write("        <!--<button onclick=\"window.location.href='ClientPfController?action=cadastrarClientPf'\" >Atualizar lista cidade</button>-->      \n");
       out.write("        \n");
       out.write("              \n");
       out.write("             \n");
@@ -218,7 +218,8 @@ public final class cadastrar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("          \n");
       out.write("           \n");
       out.write("            \n");
-      out.write("       <br> <button class=\"btn\"> Salvar </button>\n");
+      out.write("       \n");
+      out.write("       <!--<button class=\"btn\"> Salvar </button>-->\n");
       out.write("        </div>\n");
       out.write("        \n");
       out.write("        \n");
