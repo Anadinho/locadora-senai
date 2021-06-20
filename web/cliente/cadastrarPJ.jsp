@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SENAI-PI-LOCADORA</title>
-        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
     </head>
     <body>
         
@@ -73,7 +73,7 @@
        <br> <input type="text" class="campo"     value="cep" placeholder="CEP" style="width: 250px" title="Informe o CEP.">
             
        <br>  <input type="text" class="campo"    value="logradouro" placeholder="Rua/Logradouro" style="width: 250px" title="Digite sua rua.">
-             <input type="number" class="campo"  value="numero" placeholder="N°" style="width: 75px;margin-left:70px;" title="Numero do lote.">
+       <input type="number" class="campo"  value="numero" placeholder="N°" style="width: 75px;margin-left:70px;" title="Numero do lote.">
             
        <br>  <input type="text" class="campo"    value="complemento" placeholder="Complemento" style="width: 425px" title="Complemento(Apartamento, Proximo de... , etc...">
        <br>  <input type="text" class="campo"    value="bairro" placeholder="Bairro" style="width: 425px" title="Infome seu Bairro.">

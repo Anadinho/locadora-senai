@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SENAI-PI-LOCADORA</title>
-        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
     </head>
     <body>
         
@@ -28,8 +28,8 @@
                 <li>
                     Veiculo
                     <ul class="dropdown">
-                        <li><a href="../veiculo/cadastrar.jsp">Cadastrar</a></li>
-                        <li><a href="../veiculo/consultar.jsp">Consultar</a></li>
+                        <li><a href="VehicleController?action=cadastrarVehicle">Cadastrar</a></li>
+                        <li><a href="VehicleController?action=listarVehicle">Consultar</a></li>
                         <li><a href="../veiculo/editar.jsp">Editar</a></li>
                         <li><a href="../veiculo/excluir.jsp">Excluir</a></li>
                     </ul>
@@ -68,30 +68,76 @@
               <label class="TopdoForm">CADASTRAR NOVO CLIENTE (PF)</label><br>
               <a href="cadastrarPJ.jsp" class="btn-editar">Cliente (PJ)</a> <br><br>
               
-              
+         
+            <div>
+                <form method="POST" action='ClientPfController' name="frmAddCorrida">
+                
+                
+                 
+                <input  type="text" name="name" value="<c:out value="${clientPf.name}"  />" class="campo"     placeholder="Nome" style="width: 425px" title="Digite seu nome."/> <br />
+                
+               
+                <input  type="text" name="identity" value="<c:out value="${clientPf.identity}" />" class="campo"    placeholder="RG" style="width: 425px" title="Numero do RG."/> <br />
+                
+                
+                <input  type="text" name="cpf" value="<c:out value="${clientPf.cpf}" />" class="campo" placeholder="CPF/CNPJ" style="width: 425px" title="Numero do CPF."/> <br /> 
+                
+                
+                <input  type="text" name="cep" value="<c:out value="${clientPf.Address.name}" />" class="campo"      placeholder="CEP" style="width: 250px" title="Informe o CEP."/> <br /> 
+                
+                
+                <input  type="text" name="logradouro" value="<c:out value="${clientPf.Address.logradouro}" />" class="campo"     placeholder="Rua/Logradouro" style="width: 250px" title="Digite sua rua."/>
+                
+                <input  type="text" name="numberAddress" value="<c:out value="${clientPf.Address.numberAddress}" />" class="campo"   placeholder="N°" style="width: 75px;margin-left:70px;" title="Numero do lote."/> <br />
+                
+                <input  type="text" name="complement" value="<c:out value="${clientPf.Address.complement}" />" class="campo"     placeholder="Complemento" style="width: 425px" title="Complemento(Apartamento, Proximo de... , etc..."/> <br />
+                
+                <input  type="text" name="district" value="<c:out value="${clientPf.Address.district}" />" class="campo"     placeholder="Bairro" style="width: 425px" title="Infome seu Bairro."/> <br />         
+                
+<!--                <label>Cidade</label>-->
+                <select name="city"  class="campo" style="width: 250px" title="Informe sua Cidade.">
+                  <c:forEach items="${citys}" var="city">
+                    <option value="${city.id}">
+                        ${city.name} -
+                        ${city.uf.uf} 
+                    </option>
+                  </c:forEach>
+                </select> <br/>          
+                
+                
+                <input  type="text" name="email" value="<c:out value="${ClientPf.contact.telephone}" />" class="campo"     placeholder="E-mail" style="width: 425px" title="Digite seu E-mail."/> <br /> 
+                
+                
+                <input  type="text" name="telephone" value="<c:out value="${ClientPf.contact.email}" />" class="campo"     placeholder="Telefone" style="width: 425px" title="Informe seu telefone."/> <br /> 
+               
+                <br> <button class="btn" type="submit" value="Submit" > Cadastrar </button>
+      </form>
+       </div>
+
+        <!--<button onclick="window.location.href='ClientPfController?action=cadastrarClientPf'" >Atualizar lista cidade</button>-->      
         
               
              
-       <input type="text" class="campo"    value="nome" placeholder="Nome" style="width: 425px" title="Digite seu nome.">
+<!--        <input type="text" class="campo"    value="nome" placeholder="Nome" style="width: 425px" title="Digite seu nome.">
        <br> <input type="number" class="campo"   value="rg" placeholder="RG" style="width: 425px" title="Numero do RG.">
        <br> <input type="text" class="campo"     value="cpf" placeholder="CPF/CNPJ" style="width: 425px" title="Numero do CPF.">
-       <br> <input type="text" class="campo"     value="cep" placeholder="CEP" style="width: 250px" title="Informe o CEP.">
-            
+       <br> <input type="text" class="campo"     value="cep" placeholder="CEP" style="width: 250px" title="Informe o CEP.">            
        <br>  <input type="text" class="campo"    value="logradouro" placeholder="Rua/Logradouro" style="width: 250px" title="Digite sua rua.">
-             <input type="number" class="campo"  value="numero" placeholder="N°" style="width: 75px;margin-left:70px;" title="Numero do lote.">
+       <input type="number" class="campo"  value="numero" placeholder="N°" style="width: 75px;margin-left:70px;" title="Numero do lote.">
             
        <br>  <input type="text" class="campo"    value="complemento" placeholder="Complemento" style="width: 425px" title="Complemento(Apartamento, Proximo de... , etc...">
-       <br>  <input type="text" class="campo"    value="bairro" placeholder="Bairro" style="width: 425px" title="Infome seu Bairro.">
+       <br>  <input type="text" class="campo"     placeholder="Bairro" style="width: 425px" title="Infome seu Bairro.">
             
-       <br> <input type="text" class="campo"    value="cidade" placeholder="Cidade" style="width: 250px" title="Informe sua Cidade.">
+       <br> <input type="text" class="campo"     placeholder="Cidade" style="width: 250px" title="Informe sua Cidade.">
             <input type="text" class="campo"    value="uf" placeholder="UF" style="width: 75px;margin-left:70px;" title="Informe UF.">
             
-       <br> <input type="text" class="campo"    value="email" placeholder="E-mail" style="width: 425px" title="Digite seu E-mail.">
-       <br> <input type="text" class="campo"    value="telefone" placeholder="Telefone" style="width: 425px" title="Informe seu telefone.">
-            
+       <br> <input type="text" class="campo"     placeholder="E-mail" style="width: 425px" title="Digite seu E-mail.">
+       <br> <input type="text" class="campo"     placeholder="Telefone" style="width: 425px" title="Informe seu telefone.">-->
+          
            
             
-       <br> <button class="btn"> Salvar </button>
+       
+       <!--<button class="btn"> Salvar </button>-->
         </div>
         
         
