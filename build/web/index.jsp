@@ -34,7 +34,7 @@
                     Cliente
                     <ul class="dropdown">
                         <li><a href="ClientPfController?action=cadastrarClientPf">Cadastrar</a></li>
-                        <li><a href="cliente/consultar.jsp">Consultar</a></li>
+                        <li><a href="ClientPfController?action=listarClientPf">Consultar</a></li>
                         <li><a href="cliente/editar.jsp">Editar</a></li>
                         <li><a href="cliente/excluir.jsp">Excluir</a></li>
                     </ul>

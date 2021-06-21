@@ -45,6 +45,9 @@
                 <label>Validade Cnh </label> 
                 <input   type="text" name="cnhValidity" value="<fmt:formatDate pattern="MM/dd/yyyy" value="${driver.cnhValidity}"/>" /> <br /> 
 
+                 <label>URLCNH</label>
+                <input  type="text" name="urlCnh" value="<c:out value="${driver.urlCnh}" />"/> <br /> 
+                
                  <label>cep</label>
                 <input  type="text" name="cep" value="<c:out value="${driver.Address.cep}" />"/> <br /> 
                 

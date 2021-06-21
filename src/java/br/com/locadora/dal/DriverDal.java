@@ -59,7 +59,7 @@ public class DriverDal {
          public List<Driver> getAllDriver() {
         List<Driver> drivers = new ArrayList<Driver>();
             String sql = "select * \n" +
-"	from driver d join address a on d.fk_address_driver=a.fk_city_address";
+"	from driver";
                     AddressDal address = new AddressDal();
                     ContactDal contact = new ContactDal();                   
             try {
@@ -67,7 +67,7 @@ public class DriverDal {
                 ResultSet rs = statement.executeQuery(sql);
                 while (rs.next()) {
                     Driver driver = new Driver();
-                     driver.setCpf(rs.getString("cpf"));
+                    driver.setCpf(rs.getString("cpf"));
                     driver.setId(rs.getInt("id"));
                     driver.setName(rs.getString("name"));
                     driver.setIdentity(rs.getString("identity"));

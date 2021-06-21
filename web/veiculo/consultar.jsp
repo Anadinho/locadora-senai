@@ -38,7 +38,7 @@
                     Cliente
                     <ul class="dropdown">
                         <li><a href="ClientPfController?action=cadastrarClientPf">Cadastrar</a></li>
-                        <li><a href="../cliente/consultar.jsp">Consultar</a></li>
+                        <li><a href="ClientPfController?action=listarClientPf">Consultar</a></li>
                         <li><a href="../cliente/editar.jsp">Editar</a></li>
                         <li><a href="../cliente/excluir.jsp">Excluir</a></li>
                     </ul>
@@ -98,23 +98,24 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach items="${vehicles}" var="user">
+            <c:forEach items="${vehicles}" var="vehicle">
                 <tr >
-                    <td><c:out value="${user.id}" /></td>
-                    <td><c:out value="${user.licensePlate}" /></td>
-                    <td><c:out value="${user.model.name}" /></td>
-                    <td><c:out value="${user.model.brand.name}" /></td>
-                    <td><c:out value="${user.renavam}" /></td>
-                    <td><c:out value="${user.category.name}" /></td>
-                    <td><c:out value="${user.buyPrice}" /></td>
-                    <td><c:out value="${user.salePrice}" /></td>
-                    <td><c:out value="${user.numberPassengers}" /></td>
-                    <td><c:out value="${user.yearFabrication}" /></td>
-                    <td><c:out value="${user.yearModel}" /></td>
-                     <td><c:out value="${user.typeFuel}" /></td>
-                    <td><c:out value="${user.mileage}" /></td>
-                     <td><c:out value="${user.vehicleType.name}" /></td>
-                     <td ><a  href="VehicleController?action=edit&.licensePlate=<c:out value="${user.licensePlate}"/>" >Update</a></td>
+                    <td><c:out value="${vehicle.id}" /></td>
+                    <td><c:out value="${vehicle.licensePlate}" /></td>
+                    <td><c:out value="${vehicle.model.name}" /></td>
+                    <td><c:out value="${vehicle.model.brand.name}" /></td>
+                    <td><c:out value="${vehicle.renavam}" /></td>
+                    <td><c:out value="${vehicle.category.name}" /></td>
+                    <td><c:out value="${vehicle.buyPrice}" /></td>
+                    <td><c:out value="${vehicle.salePrice}" /></td>
+                    <td><c:out value="${vehicle.numberPassengers}" /></td>
+                    <td><c:out value="${vehicle.yearFabrication}" /></td>
+                    <td><c:out value="${vehicle.yearModel}" /></td>
+                    <td><c:out value="${vehicle.typeFuel}" /></td>
+                    <td><c:out value="${vehicle.mileage}" /></td>
+                    <td><c:out value="${vehicle.vehicleType.name}" /></td>
+                    <td><c:out value="${vehicle.situationVehicle.name}" /></td>
+                    <td ><a  href="VehicleController?action=edit&.licensePlate=<c:out value="${user.licensePlate}"/>" >Update</a></td>
                     <td><a href="VehicleController?action=delete&.licensePlate=<c:out value="${user.licensePlate}"/>">Delete</a></td>
                 </tr>
             </c:forEach>

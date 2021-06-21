@@ -31,9 +31,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ClientPjController", urlPatterns = {"/ClientPjController"})
 public class ClientPjController extends HttpServlet {
-        private static String INSERT_OR_EDIT = "/cadastrarClientPj.jsp";
+        private static String INSERT_OR_EDIT = "./cliente/cadastrarPJ.jsp";
     private static String EDIT = "/editarClientPj.jsp";
-    private static String LIST_USER = "/listarClientPj.jsp";
+    private static String LIST_USER = "./cliente/consultarPJ.jsp";
     
     private ClientPjDal dal;
     private ContactDal dalContact;
@@ -91,8 +91,10 @@ public class ClientPjController extends HttpServlet {
              String forward="";
             String action = request.getParameter("action");
             if(action.equalsIgnoreCase("listarClientPj")){
-                 forward = LIST_USER;
-                 request.setAttribute("clientPjs", dal.getAllClientPj());
+             request.setAttribute("clientPjs", dal.getAllClientPj());
+             
+             forward = LIST_USER;
+                 
         } else  if(action.equalsIgnoreCase("cadastrarClientPj")){
              request.setAttribute("citys", dal.getAllCity()); 
              forward = INSERT_OR_EDIT;

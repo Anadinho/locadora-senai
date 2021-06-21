@@ -35,7 +35,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ClientPfController extends HttpServlet {
         private static String INSERT_OR_EDIT = "./cliente/cadastrar.jsp";
     private static String EDIT = "/editarClientPf.jsp";
-    private static String LIST_USER = "/listarClientPf.jsp";
+    private static String LIST_USER = "./cliente/consultar.jsp";
 //    private static String LIST_USER = "/cadastrarClient.jsp";
     
     private ClientPfDal dal;

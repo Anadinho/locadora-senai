@@ -90,8 +90,9 @@ public class DriverController extends HttpServlet {
               String forward="";
             String action = request.getParameter("action");
             if(action.equalsIgnoreCase("listarDriver")){
-                 forward = LIST_USER;
-                 request.setAttribute("drivers", dal.getAllDriver());
+                request.setAttribute("drivers", dal.getAllDriver());
+                forward = LIST_USER;
+                 
         }else  if(action.equalsIgnoreCase("cadastrarDriver")){
              request.setAttribute("citys", dal.getAllCity());
              request.setAttribute("drives", dal.getAllDriver()); 

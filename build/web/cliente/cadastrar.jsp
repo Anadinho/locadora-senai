@@ -37,8 +37,8 @@
                 <li>
                     Cliente
                     <ul class="dropdown">
-                        <li><a href="cadastrar.jsp">Cadastrar</a></li>
-                        <li><a href="consultar.jsp">Consultar</a></li>
+                        <li><a href="ClientPfController?action=cadastrarClientPf">Cadastrar</a></li>
+                        <li><a href="ClientPfController?action=listarClientPf">Consultar</a></li>
                         <li><a href="editar.jsp">Editar</a></li>
                         <li><a href="excluir.jsp">Excluir</a></li>
                     </ul>
@@ -66,7 +66,7 @@
         <div class="conteudo">
             
               <label class="TopdoForm">CADASTRAR NOVO CLIENTE (PF)</label><br>
-              <a href="cadastrarPJ.jsp" class="btn-editar">Cliente (PJ)</a> <br><br>
+              <a href="ClientPjController?action=cadastrarClientPj" class="btn-editar">Cliente (PJ)</a> <br><br>
               
          
             <div>

@@ -61,24 +61,23 @@
                 </li>
             </ul> 
         </nav>
-            
+        
         
          <div class="conteudo">
              <br><br><a href="ClientPfController?action=listarClientPf" class="btn-editar">Consultar Cliente (PF)</a>
-            <a href="ClientPjController?action=listarClientPj" class="btn-editar">Consultar Cliente (PJ)</a> <br><br>
+            <a href="ClientPjController?action=listarClientPj" class="btn-editar"> ConsultarCliente (PJ)</a> <br><br>
             
             <!--COLOCAR UMA LISTA?-->
-             <div >  
+             
             <div>
-                <label>Clientes Pf</label>
+                <label>Clientes pj</label>
                 <div>      
           <table border=1>
         <thead>
             <tr>
                 <th>Id</th>
-                <th>CPF</th>
-                <th>identidade</th>
-                <th>Nome</th>
+                <th>Nome Fantasia</th>
+                <th>Razao Social</th>
                 <th>Logradouro</th>
                 <th>Numero endereço</th>
                 <th>Complemento</th>
@@ -90,12 +89,11 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach items="${clientPfs}" var="user">
+            <c:forEach items="${clientPjs}" var="user">
                 <tr >
                     <td><c:out value="${user.id}" /></td>
-                    <td><c:out value="${user.cpf}" /></td>
-                    <td><c:out value="${user.identity}" /></td>
-                    <td><c:out value="${user.name}" /></td>
+                    <td><c:out value="${user.fantasyName}" /></td>
+                    <td><c:out value="${user.razaoSocial}" /></td>
                     <td><c:out value="${user.client.address.logradouro}" /></td>
                     <td><c:out value="${user.client.address.numberAddress}" /></td>
                     <td><c:out value="${user.client.address.complement}" /></td>
@@ -103,20 +101,14 @@
                     <td><c:out value="${user.client.address.city.name}" /></td>
                      <td><c:out value="${user.client.address.city.uf.name}" /></td>
                     <td><c:out value="${user.client.contact.telephone}" /></td>
-                     <td ><a  href="ClientPfController?action=edit&id=<c:out value="${user.id}"/>" >Update</a></td>
-                    <td><a href="ClientPfController?action=delete&id=<c:out value="${user.id}"/>">Delete</a></td>
+                     <td ><a  href="ClientPjController?action=edit&id=<c:out value="${user.id}"/>" >Update</a></td>
+                    <td><a href="ClientPjController?action=delete&id=<c:out value="${user.id}"/>">Delete</a></td>
                 </tr>
             </c:forEach>
         </tbody>
     </table>
        </div>
-         </div>
-           </div>
-            
-            
-            <!--<br> <button  class="btn-editar"> Consultar Clientes (PF) </button>-->
-            
-            <!--<button class="btn-editar"> Consultar Clientes (PJ) </button>-->
+         </div>  
         </div>
         
         
