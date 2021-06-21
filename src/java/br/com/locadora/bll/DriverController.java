@@ -32,9 +32,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "DriverController", urlPatterns = {"/DriverController"})
 public class DriverController extends HttpServlet {
-            private static String INSERT_OR_EDIT = "/cadastrarDriver.jsp";
+            private static String INSERT_OR_EDIT = "./motoristas/cadastrar.jsp";
     private static String EDIT = "/editarDriver.jsp";
-    private static String LIST_USER = "/listarDriver.jsp";
+    private static String LIST_USER = "./motoristas/consultar.jsp";
     
     private DriverDal dal;
     private ContactDal dalContact;
@@ -150,7 +150,9 @@ public class DriverController extends HttpServlet {
             dal.addDriver(driver); 
         
         
-        processRequest(request, response);
+            RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
+            request.setAttribute("drivers", dal.getAllDriver());
+            view.forward(request, response);
     }
 
     /**

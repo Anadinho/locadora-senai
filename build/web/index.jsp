@@ -42,8 +42,8 @@
                   <li>
                     Motoristas
                     <ul class="dropdown">
-                       <li><a href="motoristas/cadastrar.jsp">Cadastrar</a></li>
-                        <li><a href="motoristas/consultar.jsp">Consultar</a></li>
+                        <li><a href="DriverController?action=cadastrarDriver">Cadastrar</a></li>
+                        <li><a href="DriverController?action=listarDriver">Consultar</a></li>
                         <li><a href="motoristas/editar.jsp">Editar</a></li>
                         <li><a href="motoristas/excluir.jsp">Excluir</a></li>
                     </ul>
