@@ -151,7 +151,7 @@ public class ClientPfController extends HttpServlet {
             ClientPf clientPf = new ClientPf();
             clientPf.setCpf(request.getParameter("cpf"));
             clientPf.setIdentity(request.getParameter("identity"));
-            clientPf.setName(request.getParameter("name"));
+            clientPf.setName(request.getParameter("name")); 
             clientPf.setClient(newClient);
             dal.addClientPf(clientPf);         
         

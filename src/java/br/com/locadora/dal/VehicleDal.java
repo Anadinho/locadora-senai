@@ -116,7 +116,9 @@ public class VehicleDal {
             if (rs.next()) {
                     vehicle.setLicensePlate(rs.getString("licensePlate"));
                     vehicle.setId(rs.getInt("id"));
+                    vehicle.setModel(model.getModelById(rs.getInt("fk_model_vehicle")));
                     vehicle.setRenavam(rs.getInt("renavam"));
+                    vehicle.setCategory(category.getCategoryById(rs.getInt("fk_category_vehicle")));
                     vehicle.setBuyPrice(rs.getDouble("buyPrice"));
                     vehicle.setSalePrice(rs.getDouble("salePrice"));
                     vehicle.setNumberPassengers(rs.getInt("numberPassengers"));

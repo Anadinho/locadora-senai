@@ -46,9 +46,9 @@
                     <td><c:out value="${user.vehicle.licensePlate}" /></td>
                     
                      <!--O botão PF -->
-                    <!--<td><c:out value="${user.clientPf.name}" /></td>-->
+                    <td><c:out value="${user.clientPf.name}" /></td>
                     <!--O botão PJ -->
-                    <td><c:out value="${user.clientPj.fantasyName}" /></td>
+                    <!--<td><c:out value="${user.clientPj.fantasyName}" /></td>-->
                     
                     <td><c:out value="${user.driver.name}" /></td>
                      <td><fmt:formatDate pattern="yyyy-MMM-dd" value="${user.dateRental}" /></td>

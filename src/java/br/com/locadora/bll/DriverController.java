@@ -95,7 +95,7 @@ public class DriverController extends HttpServlet {
                  
         }else  if(action.equalsIgnoreCase("cadastrarDriver")){
              request.setAttribute("citys", dal.getAllCity());
-             request.setAttribute("drives", dal.getAllDriver()); 
+             request.setAttribute("drivers", dal.getAllDriver()); 
              forward = INSERT_OR_EDIT;
         }
         

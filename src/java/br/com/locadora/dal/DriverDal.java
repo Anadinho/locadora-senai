@@ -104,6 +104,7 @@ public class DriverDal {
                 driver.setName(rs.getString("name"));
                 driver.setIdentity(rs.getString("identity"));
                 driver.setCnh(rs.getString("cnh"));
+                driver.setCategory(rs.getString("category"));
                 driver.setCnhValidity(rs.getDate("cnhValidity"));
                 driver.setUrlCnh(rs.getString("urlCnh"));    
                 driver.setAddress(address.getAddressById(rs.getInt("fk_address_driver")));

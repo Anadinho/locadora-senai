@@ -14,6 +14,34 @@ import java.time.format.DateTimeFormatter;  // Import the DateTimeFormatter clas
  */
 public class Rental {
 
+    /**
+     * @return the lateFee
+     */
+    public String getLateFee() {
+        return lateFee;
+    }
+
+    /**
+     * @param lateFee the lateFee to set
+     */
+    public void setLateFee(String lateFee) {
+        this.lateFee = lateFee;
+    }
+
+    /**
+     * @return the priceTotal
+     */
+    public double getPriceTotal() {
+        return priceTotal;
+    }
+
+    /**
+     * @param priceTotal the priceTotal to set
+     */
+    public void setPriceTotal(double priceTotal) {
+        this.priceTotal = priceTotal;
+    }
+
 
 
     private int id;
@@ -30,6 +58,8 @@ public class Rental {
     private double priceGuarantee;
     private double priceInsuranceCar;
     private double priceInsuranceRental;
+    private double priceTotal;
+    private String lateFee;
     private String trafficTicket;
     private int litersFuel;
     private Client client;
