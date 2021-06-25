@@ -55,8 +55,8 @@
                 <li>
                     Locação
                     <ul class="dropdown">
-                      <li><a href="../locadora/cadastrar.jsp">Cadastrar</a></li>
-                        <li><a href="../locadora/consultar.jsp">Consultar</a></li>
+                      <li><a href="RentalController?action=simularRental">Cadastrar</a></li>
+                        <li><a href="RentalController?action=listarRental">Consultar</a></li>
 
                     </ul>
                 </li>

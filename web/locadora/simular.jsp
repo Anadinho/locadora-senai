@@ -32,8 +32,8 @@
                 <li>
                     Veiculo
                     <ul class="dropdown">
-                        <li><a href="../veiculo/cadastrar.jsp">Cadastrar</a></li>
-                        <li><a href="../veiculo/consultar.jsp">Consultar</a></li>
+                        <li><a href="VehicleController?action=cadastrarVehicle">Cadastrar</a></li>
+                        <li><a href="VehicleController?action=listarVehicle">Consultar</a></li>
                         <li><a href="../veiculo/editar.jsp">Editar</a></li>
                         <li><a href="../veiculo/excluir.jsp">Excluir</a></li>
                     </ul>
@@ -41,8 +41,8 @@
                 <li>
                     Cliente
                     <ul class="dropdown">
-                        <li><a href="../cliente/cadastrar.jsp">Cadastrar</a></li>
-                        <li><a href="../cliente/consultar.jsp">Consultar</a></li>
+                        <li><a href="ClientPfController?action=cadastrarClientPf">Cadastrar</a></li>
+                        <li><a href="ClientPfController?action=listarClientPf">Consultar</a></li>
                         <li><a href="../cliente/editar.jsp">Editar</a></li>
                         <li><a href="../cliente/excluir.jsp">Excluir</a></li>
                     </ul>
@@ -59,8 +59,8 @@
                 <li>
                     Locação
                     <ul class="dropdown">
-                        <li><a href="cadastrar.jsp">Cadastrar</a></li>
-                        <li><a href="consultar.jsp">Consultar</a></li>
+                        <li><a href="RentalController?action=simularRental">Cadastrar</a></li>
+                        <li><a href="RentalController?action=listarRental">Consultar</a></li>
                         
                     </ul>
                 </li>

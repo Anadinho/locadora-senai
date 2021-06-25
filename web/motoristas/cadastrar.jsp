@@ -47,8 +47,8 @@
                 <li>
                     Cliente
                     <ul class="dropdown">
-                        <li><a href="../cliente/cadastrar.jsp">Cadastrar</a></li>
-                        <li><a href="../cliente/consultar.jsp">Consultar</a></li>
+                        <li><a href="ClientPfController?action=cadastrarClientPf">Cadastrar</a></li>
+                        <li><a href="ClientPfController?action=listarClientPf">Consultar</a></li>
                         <li><a href="../cliente/editar.jsp">Editar</a></li>
                         <li><a href="../cliente/excluir.jsp">Excluir</a></li>
                     </ul>
@@ -56,7 +56,7 @@
                 <li>
                     Motoristas
                     <ul class="dropdown">
-                       <li><a href="cadastrar.jsp">Cadastrar</a></li>
+                       <li><a href="DriverController?action=cadastrarDriver">Cadastrar</a></li>
                         <li><a href="DriverController?action=listarDriver">Consultar</a></li>
                         <li><a href="editar.jsp">Editar</a></li>
                         <li><a href="excluir.jsp">Excluir</a></li>
@@ -65,8 +65,8 @@
                 <li>
                     Locação
                     <ul class="dropdown">
-                        <li><a href="../locadora/cadastrar.jsp">Cadastrar</a></li>
-                        <li><a href="../locadora/consultar.jsp">Consultar</a></li>
+                        <li><a href="RentalController?action=simularRental">Cadastrar</a></li>
+                        <li><a href="RentalController?action=listarRental">Consultar</a></li>
                     </ul>
                 </li>
             </ul> 
