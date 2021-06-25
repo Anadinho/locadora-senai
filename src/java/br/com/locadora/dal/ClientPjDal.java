@@ -31,7 +31,7 @@ public class ClientPjDal {
     }
         
         
-                     public void addClientPj(ClientPj clientPj) {
+      public void addClientPj(ClientPj clientPj) {
         String sql = "INSERT INTO clientPj ( cnpj, fantasyName, razaoSocial, fk_client_pj)\n" +
 "	VALUES ( ?, ?, ?, ?)";
         try {
@@ -125,5 +125,6 @@ public class ClientPjDal {
 
             return citys;
     }
+          
     
 }

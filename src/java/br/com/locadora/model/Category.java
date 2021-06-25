@@ -10,8 +10,25 @@ package br.com.locadora.model;
  * @author suporte
  */
 public class Category {
+
+
     private int id;
     private String name;
+    private Double valor;
+    
+        /**
+     * @return the valor
+     */
+    public Double getValor() {
+        return valor;
+    }
+
+    /**
+     * @param valor the valor to set
+     */
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
 
     /**
      * @return the id

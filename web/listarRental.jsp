@@ -26,6 +26,7 @@
                 <th>Nome Cliente</th>
                  <th>Nome Motorista </th>
                 <th>Data da locação</th>
+                <!--<th>Data da locação - alternativo</th>-->
                 <th>Data da devolução prevista</th>
                 <th>Data da devolução</th>
                 <th>Quilometragem antiga</th>
@@ -34,6 +35,7 @@
                  <th>Valor Do Caução</th>
                  <th>Valor cobertura do seguro</th>
                  <th>Valor do seguro da locação</th>
+                 <th>Valor Total locação</th>
                   <th>Multa</th>
                   <th>Litros de combustivel faltando</th>
                 <th colspan=2 >Action</th>
@@ -51,8 +53,10 @@
                     <!--<td><c:out value="${user.clientPj.fantasyName}" /></td>-->
                     
                     <td><c:out value="${user.driver.name}" /></td>
-                     <td><fmt:formatDate pattern="yyyy-MMM-dd" value="${user.dateRental}" /></td>
-                     <td><fmt:formatDate pattern="yyyy-MMM-dd" value="${user.dateScheduledDevolution}" /></td>
+                     <!--<td><fmt:formatDate pattern="yyyy-MMM-dd HH:mm:ss" value="${user.dateRental}" /></td>-->
+                     <td><c:out value="${user.dateTimeRental}" /></td>
+                     <!--<td><fmt:formatDate pattern="yyyy-MMM-dd" value="${user.dateScheduledDevolution}" /></td>-->
+                     <td><c:out value="${user.dateTimeScheduledDevolution}" /></td>
                       <td><fmt:formatDate pattern="yyyy-MMM-dd" value="${user.dateDevolution}" /></td>
                     <td><c:out value="${user.initialMileage}" /></td>                   
                     <td><c:out value="${user.finalMileage}" /></td>
@@ -60,6 +64,7 @@
                     <td><c:out value="${user.priceGuarantee}" /></td>
                     <td><c:out value="${user.priceInsuranceCar}" /></td>
                     <td><c:out value="${user.priceInsuranceRental}" /></td>
+                    <td><c:out value="${user.priceTotal}" /></td>
                     <td><c:out value="${user.trafficTicket}" /></td>
                      <td><c:out value="${user.litersFuel}" /></td>
                      <td ><a  href="RentalController?action=edit&cpf=<c:out value="${user.id}"/>" >Update</a></td>

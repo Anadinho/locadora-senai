@@ -3,7 +3,8 @@
     Created on : 31/05/2021, 20:17:35
     Author     : Cabral
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -69,11 +70,84 @@
         
         <div class="conteudo">
             <label class="TopdoForm">NOVA LOCAÇÃO DE VEICULO</label><br>
-            <input type="text" class="campo" placeholder="Veiculo" style="width: 425px" title="Digite o nome do Veiculo."> <br> 
+            
+            <form method="POST" action='RentalController?action=cadastrarRentalPf' name="frmAddRental">
+             <!--<label>Veiculos</label>-->
+                <select name="vehicle" class="campo" style="width: 425px" title="Digite o nome do Veiculo.">
+                  <c:forEach items="${vehicles}" var="vehicle">
+                    <option value="${vehicle.licensePlate}">
+                        ${vehicle.licensePlate} -
+                        ${vehicle.model.name}-
+                        ${vehicle.model.brand.name}
+                    </option>
+                  </c:forEach>
+                </select> 
+                
+                <!--<label>Kilometragem inicial</label>-->
+                <input  type="text" name="initialMileage" value="<c:out value="${simuladoRental.initialMileage}" />" class="campo" placeholder="KM atual do veiculo" style="width: 155px" title="Km atual do veiculo."/> <br />
+                
+                 <!--<label>Cliente PF</label>-->
+                <select name="fk_client" class="campo" style="width: 425px" title="Digite o nome do Cliente.">
+                  <c:forEach items="${clientPfs}" var="clientPf">
+                    <option value="${clientPf.client.id}">
+                        ${clientPf.cpf} -
+                        ${clientPf.name}                        
+                    </option>
+                  </c:forEach>
+                </select> <br/> 
+                
+<!--                 <label>Cliente Pj</label>
+                <select name="clientPj" >
+                  <c:forEach items="${clientPjs}" var="clientPj">
+                    <option value="${clientPj.cnpj}">
+                        ${clientPj.cnpj} 
+                        ${clientPj.fantasyName}
+                    </option>
+                  </c:forEach>
+                </select> <br/> -->
+                
+                 <!--<label>Motorista</label>-->
+                <select name="driver" class="campo" style="width: 425px" title="Digite o nome do Motorista.">
+                  <c:forEach items="${drivers}" var="driver">
+                    <option value="${driver.cpf}">
+                        ${driver.cpf}- 
+                        ${driver.name}
+                    </option>
+                  </c:forEach>
+                </select> <br/> 
+            
+                 <!--<label>Quantidade de diarias</label>-->
+                <input  type="text" name="diarias" value="<c:out value="${simuladoRental.diarias}" />"  class="campo" placeholder="Diarias" style="width: 155px" title="Diarias."/> <br />
+            
+                
+                <br> <button class="btn-editar"> Simular </button> <br>
+                
+                <!--<label>Valor locação</label>-->
+                <input  type="text" name="priceRental" value="<c:out value="${simuladoRental.calculoTotal}" />" readonly="readonly" class="campo" placeholder="Valor da Locação" style="width: 155px" title="Valor de Locação."/> <br />
+            
+                <!--<label>Valor Caução</label>-->
+                <input  type="text" name="priceGuarantee" value="<c:out value="${simuladoRental.priceGuarantee}" />" readonly="readonly" class="campo" placeholder="Valor da Caução" style="width: 155px" title="Valor de Caução."/> <br /> 
+            
+                <!--<label>taxa seguro carro</label>-->
+                <input  type="text" name="priceInsuranceRental" value="<c:out value="${simuladoRental.priceInsuranceRental}" />" readonly="readonly" class="campo" placeholder="taxa do Seguro" style="width: 155px" title="Valor do seguro."/> <br />
+                
+                <!--<label>Valor Total da locação</label>-->
+                <input  type="text" name="priceTotal" value="<c:out value="${simuladoRental.priceTotal}" />" readonly="readonly" class="campo" placeholder="Total" style="width: 155px" title="TOTAL."/> 
+                
+                <!--<label>Valor a ser pago pelo seguro do carro</label>-->
+                <input  type="text" name="priceInsuranceCar" value="<c:out value="${simuladoRental.priceInsuranceCar}" />" readonly="readonly" class="campo" placeholder="Cobertura Seguro" style="width: 155px" title="Valor maximo da cobertura do  Seguro"/> <br />
+                
+                <br> <button class="btn" type="submit" value="Submit" > Realizar Locação </button>
+               
+                </form>
+                
+            
+            
+<!--            <input type="text" class="campo" style="width: 425px" title="Digite o nome do Veiculo."> <br> 
        <input type="radio" name="identifier" value="PF"> <label class="radio-label" for="PF">PF</label>
        <input type="radio" name="identifier" value="PJ"> <label class="radio-label" for="PJ">PJ</label> <br>
            
-       <input type="text" class="campo" value="clienteLocar" placeholder="Cliente" style="width: 425px" title="Digite o nome do Cliente.">  
+       <input type="text" class="campo"  placeholder="Cliente" style="width: 425px" title="Digite o nome do Cliente.">  
        <br> <input type="text" class="campo" value="motoristaLocar" placeholder="Motorista" style="width: 425px" title="Digite o nome do Motorista.">  
       
        <br><input type="date" class="campo" value="dataLocacao" placeholder="Data de Locação" style="width: 155px" title="Data de locação.">  
@@ -89,13 +163,7 @@
            <br>
            <input type="number" class="campo" value="total" placeholder="Total" style="width: 155px" title="TOTAL.">
            <input type="number" class="campo" value="seguroCobertura" placeholder="Cobertura Seguro" style="width: 155px" title="Cobertura Seguro.">
-       
-       
-            
-     
-           
-            
-       <br> <button class="btn"> Cadastrar Locação </button>
+       -->  
         </div>
         
         

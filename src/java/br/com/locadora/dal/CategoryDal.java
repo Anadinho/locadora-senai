@@ -39,6 +39,7 @@ public class CategoryDal {
                    Category category = new Category();
                     category.setId(rs.getInt("id"));
                     category.setName(rs.getString("name"));
+                    category.setValor(rs.getDouble("valor"));
                     categorys.add(category);
                 }
             } catch (SQLException e) {
@@ -59,6 +60,7 @@ public class CategoryDal {
             if (rs.next()) {
                 category.setId(rs.getInt("id"));
                 category.setName(rs.getString("name"));
+                category.setValor(rs.getDouble("valor"));
                 
             }
         } catch (SQLException e) {

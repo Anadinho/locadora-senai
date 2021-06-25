@@ -33,7 +33,7 @@ public class RentalDal {
         
           public void addRental(Rental rental) {
             String sql = "INSERT INTO senai_locadora_pi3.rental (fk_vehicle_rental,fk_client_rental,fk_driver_rental,dateRental,dateScheduledDevolution,initialMileage,finalMileage,priceRental,priceGuarantee,priceInsuranceCar,priceInsuranceRental,priceTotal,lateFee,trafficTicket,litersFuel)\n" +
-            "	VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+            "	VALUES (?,?,?,now(),DATE_ADD(now(), INTERVAL ? day),?,?,?,?,?,?,?,?,?,?);";
             try {
                 PreparedStatement preparedStatement = conexao
                         .prepareStatement(sql);
@@ -41,19 +41,20 @@ public class RentalDal {
                 preparedStatement.setString(1, rental.getVehicle().getLicensePlate());
                 preparedStatement.setInt(2, rental.getClient().getId());
                 preparedStatement.setString(3, rental.getDriver().getCpf());
-                preparedStatement.setDate(4, new java.sql.Date(rental.getDateRental().getTime()));
-                preparedStatement.setDate(5, new java.sql.Date(rental.getDateScheduledDevolution().getTime()));
+//                preparedStatement.setDate(4, new java.sql.Date(rental.getDateRental().getTime()));
+//                preparedStatement.setDate(4, new java.sql.Date(rental.getDateScheduledDevolution().getTime()));
 //                preparedStatement.setDate(6, new java.sql.Date(rental.getDateDevolution().getTime()));
-                preparedStatement.setInt(6, rental.getInitialMileage());
-                preparedStatement.setInt(7, rental.getFinalMileage());
-                preparedStatement.setDouble(8, rental.getPriceRental());
-                preparedStatement.setDouble(9, rental.getPriceGuarantee());
-                preparedStatement.setDouble(10, rental.getPriceInsuranceCar());
-                preparedStatement.setDouble(11, rental.getPriceInsuranceRental());
-                preparedStatement.setDouble(12, rental.getPriceTotal());
-                preparedStatement.setString(13, rental.getLateFee());;
-                preparedStatement.setString(14, rental.getTrafficTicket());
-                preparedStatement.setInt(15, rental.getLitersFuel());
+                preparedStatement.setDouble(4, rental.getDiarias());
+                preparedStatement.setInt(5, rental.getInitialMileage());
+                preparedStatement.setInt(6, rental.getFinalMileage());
+                preparedStatement.setDouble(7, rental.getPriceRental());
+                preparedStatement.setDouble(8, rental.getPriceGuarantee());
+                preparedStatement.setDouble(9, rental.getPriceInsuranceCar());
+                preparedStatement.setDouble(10, rental.getPriceInsuranceRental());
+                preparedStatement.setDouble(11, rental.getPriceTotal());
+                preparedStatement.setString(12, rental.getLateFee());;
+                preparedStatement.setString(13, rental.getTrafficTicket());
+                preparedStatement.setInt(14, rental.getLitersFuel());
                             
 
                 preparedStatement.executeUpdate();
@@ -85,8 +86,10 @@ public class RentalDal {
                     rental.setClientPj(clientPj.getClientPjById(rs.getInt("fk_client_rental")));
                     rental.setDriver(driver.getDriverById(rs.getString("fk_driver_rental")));
                     rental.setDateRental(rs.getDate("dateRental"));
-                    rental.setDateDevolution(rs.getDate("dateDevolution"));
+                    rental.setDateTimeRental(rs.getString("dateRental"));
+                    rental.setDateDevolution(rs.getDate("dateDevolution"));                    
                     rental.setDateScheduledDevolution(rs.getDate("dateScheduledDevolution"));
+                    rental.setDateTimeScheduledDevolution(rs.getString("dateScheduledDevolution"));
                     rental.setInitialMileage(rs.getInt("initialMileage"));
                     rental.setFinalMileage(rs.getInt("finalMileage"));
                     rental.setPriceRental(rs.getDouble("priceRental"));
@@ -97,6 +100,8 @@ public class RentalDal {
                     rental.setLateFee(rs.getString("lateFee"));
                     rental.setTrafficTicket(rs.getString("trafficTicket"));
                     rental.setLitersFuel(rs.getInt("litersFuel"));
+             
+                    
                     
                     
                     rentals.add(rental);
@@ -128,6 +133,7 @@ public class RentalDal {
                     rental.setClientPj(clientPj.getClientPjById(rs.getInt("fk_client_rental")));
                     rental.setDriver(driver.getDriverById(rs.getString("fk_driver_rental")));
                     rental.setDateRental(rs.getDate("dateRental"));
+                    
                     rental.setDateScheduledDevolution(rs.getDate("dateScheduledDevolution"));
                     rental.setInitialMileage(rs.getInt("initialMileage"));
                     rental.setFinalMileage(rs.getInt("finalMileage"));
@@ -138,7 +144,7 @@ public class RentalDal {
                     rental.setPriceTotal(rs.getDouble("priceTotal"));
                     rental.setLateFee(rs.getString("lateFee"));
                     rental.setTrafficTicket(rs.getString("trafficTicket"));
-                    rental.setLitersFuel(rs.getInt("litersFuel"));
+                    rental.setLitersFuel(rs.getInt("litersFuel"));              
                 
             }
         } catch (SQLException e) {
@@ -147,5 +153,9 @@ public class RentalDal {
 
         return rental;
     }
-    
+ 
+ 
+
+
+ 
 }

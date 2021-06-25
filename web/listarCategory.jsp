@@ -23,6 +23,7 @@
             <tr>
                 <th>Id</th>
                 <th>Categorias</th>
+                <th>Preço/diaria</th>
                 <th colspan=2 >Action</th>
             </tr>
         </thead>
@@ -31,6 +32,7 @@
                 <tr >
                     <td><c:out value="${user.id}" /></td>
                     <td><c:out value="${user.name}" /></td>
+                    <td><c:out value="${user.valor}" /></td>
                      <td ><a  href="CategoryController?action=edit&id=<c:out value="${user.id}"/>" >Update</a></td>
                     <td><a href="CategoryController?action=delete&id=<c:out value="${user.id}"/>">Delete</a></td>
                 </tr>

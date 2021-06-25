@@ -17,9 +17,12 @@ import br.com.locadora.model.Address;
 import br.com.locadora.model.Rental;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.time.LocalDateTime; // Import the LocalDateTime class
+import java.time.format.DateTimeFormatter; // Import the DateTimeFormatter class
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,9 +37,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "RentalController", urlPatterns = {"/RentalController"})
 public class RentalController extends HttpServlet {
     
-        private static String INSERT_OR_EDIT = "/cadastrarRental.jsp";
+//    private static String INSERT_OR_EDIT = "/cadastrarRental.jsp";
+    private static String INSERT_OR_EDIT = "./locadora/cadastrar.jsp";
     private static String EDIT = "/editarRental.jsp";
-    private static String LIST_USER = "/listarRental.jsp";
+    private static String LIST_USER = "./locadora/consultar.jsp";
     
     private RentalDal dal;
     private VehicleDal dalVehicle;
@@ -44,6 +48,7 @@ public class RentalController extends HttpServlet {
     private DriverDal dalDriver;
     private ClientPfDal dalClientPf;
     private ClientPjDal dalClientPj;
+  
         public RentalController() {
         super();
         dal = new RentalDal();
@@ -52,6 +57,7 @@ public class RentalController extends HttpServlet {
         dalDriver= new DriverDal();
         dalClientPf= new ClientPfDal();
         dalClientPj= new ClientPjDal();
+        
     }
 
     /**
@@ -97,13 +103,24 @@ public class RentalController extends HttpServlet {
         if(action.equalsIgnoreCase("listarRental")){
                  forward = LIST_USER;
                  request.setAttribute("rentals", dal.getAllRental());
+                 
         }else  if(action.equalsIgnoreCase("cadastrarRental")){
+             
              request.setAttribute("clientPjs", dalClientPj.getAllClientPj());
              request.setAttribute("clientPfs", dalClientPf.getAllClientPf()); 
              request.setAttribute("vehicles", dalVehicle.getAllVehicle()); 
              request.setAttribute("drivers", dalDriver.getAllDriver()); 
              forward = INSERT_OR_EDIT;
+             
+        }else  if(action.equalsIgnoreCase("simularRental")){     
+                           
+             request.setAttribute("clientPjs", dalClientPj.getAllClientPj());
+             request.setAttribute("clientPfs", dalClientPf.getAllClientPf()); 
+             request.setAttribute("vehicles", dalVehicle.getAllVehicle()); 
+             request.setAttribute("drivers", dalDriver.getAllDriver());           
+             forward = "./locadora/simular.jsp";
         }
+        
         
         
         
@@ -123,44 +140,71 @@ public class RentalController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            String forward="";
+            String action = request.getParameter("action");
+            
+            if(action.equalsIgnoreCase("cadastrarRentalPf")){
         
             Rental rental = new Rental();
                      
             rental.setVehicle(dalVehicle.getVehicleById(request.getParameter("vehicle")));
             rental.setClient(dalClient.getClientById(Integer.parseInt(request.getParameter("fk_client"))));
             rental.setDriver(dalDriver.getDriverById(request.getParameter("driver")));
+                     
+//            try {
+//            Date dateRental = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("dateRental"));
+//            rental.setDateRental(dateRental);
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
             
-            try {
-            Date dateRental = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("dateRental"));
-            rental.setDateRental(dateRental);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            
-            try {
-            Date dateScheduledDevolution = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("dateScheduledDevolution"));
-            rental.setDateScheduledDevolution(dateScheduledDevolution);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            
+//            try {
+//            Date dateScheduledDevolution = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("dateScheduledDevolution"));
+//            rental.setDateScheduledDevolution(dateScheduledDevolution);
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+            rental.setDiarias(Double.parseDouble(request.getParameter("diarias"))); 
             rental.setInitialMileage(Integer.parseInt(request.getParameter("initialMileage")));
-            rental.setFinalMileage(Integer.parseInt(request.getParameter("finalMileage")));  
+//            rental.setFinalMileage(Integer.parseInt(request.getParameter("finalMileage")));  
             rental.setPriceRental(Double.parseDouble(request.getParameter("priceRental")));
             rental.setPriceGuarantee(Double.parseDouble(request.getParameter("priceGuarantee")));
             rental.setPriceInsuranceCar(Double.parseDouble(request.getParameter("priceInsuranceCar")));
             rental.setPriceInsuranceRental(Double.parseDouble(request.getParameter("priceInsuranceRental")));
             rental.setPriceTotal(Double.parseDouble(request.getParameter("priceTotal")));
             rental.setLateFee(request.getParameter("lateFee"));
-            rental.setTrafficTicket(request.getParameter("trafficTicket"));
-            
-            rental.setLitersFuel(Integer.parseInt(request.getParameter("litersFuel")));
+            rental.setTrafficTicket(request.getParameter("trafficTicket"));            
+//            rental.setLitersFuel(Integer.parseInt(request.getParameter("litersFuel")));
             dal.addRental(rental);
             
         
             RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
             request.setAttribute("rentals", dal.getAllRental());
             view.forward(request, response);
+            
+            }
+             else if(action.equalsIgnoreCase("simularRental")){
+             Rental rental = new Rental();
+             
+             
+             rental.setInitialMileage(dalVehicle.getVehicleById(request.getParameter("vehicle")).getMileage());
+             rental.setDiarias(Double.parseDouble(request.getParameter("diarias")));             
+             rental.setValorDiaria(dalVehicle.getVehicleById(request.getParameter("vehicle")).getCategory().getValor());
+             rental.setCalculoTotal(Double.parseDouble(request.getParameter("diarias")), dalVehicle.getVehicleById(request.getParameter("vehicle")).getCategory().getValor());
+             rental.setCalculoCaucao(rental.getCalculoTotal());
+             rental.setPriceInsuranceCar(100000);
+             rental.setValorSeguroLocacao(rental.getCalculoTotal());
+             rental.setCalculoTotalLocacao(rental.getCalculoTotal(), rental.getPriceInsuranceRental());
+             request.setAttribute("simuladoRental", rental); 
+             
+             request.setAttribute("clientPjs", dalClientPj.getAllClientPj());
+             request.setAttribute("clientPfs", dalClientPf.getAllClientPf()); 
+             request.setAttribute("vehicles", dalVehicle.getAllVehicle()); 
+             request.setAttribute("drivers", dalDriver.getAllDriver()); 
+             RequestDispatcher view = request.getRequestDispatcher(INSERT_OR_EDIT);             
+             view.forward(request, response);
+                
+        }
     }
 
     /**

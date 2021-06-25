@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/src/java/br/com/locadora/dal/DriverDal.java</file>
-            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/src/java/br/com/locadora/bll/VehicleController.java</file>
-            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/src/java/br/com/locadora/dal/RentalDal.java</file>
-            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/src/java/br/com/locadora/bll/DriverController.java</file>
+            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/web/locadora/cadastrar.jsp</file>
+            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/web/locadora/simular.jsp</file>
+            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/web/index.jsp</file>
             <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/src/java/br/com/locadora/bll/RentalController.java</file>
+            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/web/listarRental.jsp</file>
+            <file>file:/home/suporte/Documentos/BACKUP%20SENAI/PI-3/senai-locadora-PI-2021/web/locadora/consultar.jsp</file>
         </group>
     </open-files>
 </project-private>

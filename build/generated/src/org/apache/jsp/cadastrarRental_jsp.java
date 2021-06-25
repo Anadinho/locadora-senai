@@ -72,15 +72,15 @@ public final class cadastrarRental_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("        <script type=\"text/javascript\" src=\"js/jquery-ui-1.8.18.custom.min.js\"></script>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <script>\n");
+      out.write("<!--        <script>\n");
       out.write("        $(function() {\n");
       out.write("            $('input[name=dateRental]').datepicker();\n");
       out.write("            $('input[name=dateScheduledDevolution]').datepicker();\n");
       out.write("        });\n");
-      out.write("        </script>\n");
+      out.write("        </script>-->\n");
       out.write("            <label>Realizar Locação</label>  \n");
       out.write("            <div>\n");
-      out.write("                <form method=\"POST\" action='RentalController' name=\"frmAddRental\">\n");
+      out.write("                <form method=\"POST\" action='RentalController?action=cadastrarRentalPf' name=\"frmAddRental\">\n");
       out.write("                \n");
       out.write("                \n");
       out.write("                <label>Veiculos</label>\n");
@@ -115,80 +115,84 @@ public final class cadastrarRental_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\n");
       out.write("                </select> <br/> \n");
       out.write("                \n");
-      out.write("                <label>Data Locação </label> \n");
-      out.write("                <input   type=\"text\" name=\"dateRental\" value=\"");
-      if (_jspx_meth_fmt_formatDate_0(_jspx_page_context))
-        return;
-      out.write("\" /> <br /> \n");
-      out.write("\n");
-      out.write("                                \n");
-      out.write("                <label>Data Prevista Devolução </label> \n");
-      out.write("                <input   type=\"text\" name=\"dateScheduledDevolution\" value=\"");
-      if (_jspx_meth_fmt_formatDate_1(_jspx_page_context))
-        return;
-      out.write("\" /> <br /> \n");
-      out.write("\n");
-      out.write("                \n");
-      out.write("                <label>Kilometragem inicial</label>\n");
-      out.write("                <input  type=\"text\" name=\"initialMileage\" value=\"");
+      out.write("                <label>Quantidade de diarias</label>\n");
+      out.write("                <input  type=\"text\" name=\"diarias\" value=\"");
       if (_jspx_meth_c_out_0(_jspx_page_context))
         return;
       out.write("\"/> <br />\n");
       out.write("                \n");
-      out.write("                <label>Kilometragem final</label>\n");
-      out.write("                <input  type=\"text\" name=\"finalMileage\" value=\"");
+      out.write("<!--                <label>Data Locação </label> \n");
+      out.write("                <input   type=\"text\" name=\"dateRental\" value=\"");
+      if (_jspx_meth_fmt_formatDate_0(_jspx_page_context))
+        return;
+      out.write("\" /> <br /> \n");
+      out.write("                          -->\n");
+      out.write("<!--                <label>Data Prevista Devolução </label> \n");
+      out.write("                <input   type=\"text\" name=\"dateScheduledDevolution\" value=\"");
+      if (_jspx_meth_fmt_formatDate_1(_jspx_page_context))
+        return;
+      out.write("\" /> <br /> \n");
+      out.write("              -->\n");
+      out.write("                <label>Kilometragem inicial</label>\n");
+      out.write("                <input  type=\"text\" name=\"initialMileage\" value=\"");
       if (_jspx_meth_c_out_1(_jspx_page_context))
         return;
-      out.write("\"/> <br /> \n");
+      out.write("\" /> <br />\n");
+      out.write("                \n");
+      out.write("<!--                <label>Kilometragem final</label>\n");
+      out.write("                <input  type=\"text\" name=\"finalMileage\" value=\"");
+      if (_jspx_meth_c_out_2(_jspx_page_context))
+        return;
+      out.write("\"/> <br /> -->\n");
       out.write("                \n");
       out.write("                <label>Valor locação</label>\n");
       out.write("                <input  type=\"text\" name=\"priceRental\" value=\"");
-      if (_jspx_meth_c_out_2(_jspx_page_context))
+      if (_jspx_meth_c_out_3(_jspx_page_context))
         return;
-      out.write("\"/> <br />\n");
+      out.write("\" /> <br />\n");
       out.write("                \n");
       out.write("                <label>Valor Caução</label>\n");
       out.write("                <input  type=\"text\" name=\"priceGuarantee\" value=\"");
-      if (_jspx_meth_c_out_3(_jspx_page_context))
+      if (_jspx_meth_c_out_4(_jspx_page_context))
         return;
       out.write("\"/> <br /> \n");
       out.write("                \n");
       out.write("                <label>Valor a ser pago pelo seguro do carro</label>\n");
       out.write("                <input  type=\"text\" name=\"priceInsuranceCar\" value=\"");
-      if (_jspx_meth_c_out_4(_jspx_page_context))
+      if (_jspx_meth_c_out_5(_jspx_page_context))
         return;
       out.write("\"/> <br />\n");
       out.write("                \n");
       out.write("                <label>taxa seguro carro</label>\n");
       out.write("                <input  type=\"text\" name=\"priceInsuranceRental\" value=\"");
-      if (_jspx_meth_c_out_5(_jspx_page_context))
+      if (_jspx_meth_c_out_6(_jspx_page_context))
         return;
       out.write("\"/> <br />\n");
       out.write("                \n");
       out.write("                <label>Valor Total da locação</label>\n");
       out.write("                <input  type=\"text\" name=\"priceTotal\" value=\"");
-      if (_jspx_meth_c_out_6(_jspx_page_context))
+      if (_jspx_meth_c_out_7(_jspx_page_context))
         return;
       out.write("\"/> <br />\n");
       out.write("                \n");
-      out.write("                 <label>Multa por atraso?</label>\n");
+      out.write("<!--                 <label>Multa por atraso?</label>\n");
       out.write("                <input  type=\"text\" name=\"lateFee\" value=\"");
-      if (_jspx_meth_c_out_7(_jspx_page_context))
+      if (_jspx_meth_c_out_8(_jspx_page_context))
         return;
       out.write("\"/> <br />\n");
       out.write("                \n");
       out.write("                \n");
       out.write("                <label>Multa de transito?</label>\n");
       out.write("                <input  type=\"text\" name=\"trafficTicket\" value=\"");
-      if (_jspx_meth_c_out_8(_jspx_page_context))
-        return;
-      out.write("\"/> <br /> \n");
-      out.write("                \n");
-      out.write("                 <label>Litros de combustivel faltante</label>\n");
-      out.write("                <input  type=\"text\" name=\"litersFuel\" value=\"");
       if (_jspx_meth_c_out_9(_jspx_page_context))
         return;
-      out.write("\"/> <br /> \n");
+      out.write("\"/> <br /> -->\n");
+      out.write("                \n");
+      out.write("<!--                 <label>Litros de combustivel faltante</label>\n");
+      out.write("                <input  type=\"text\" name=\"litersFuel\" value=\"");
+      if (_jspx_meth_c_out_10(_jspx_page_context))
+        return;
+      out.write("\"/> <br /> -->\n");
       out.write("               \n");
       out.write("                \n");
       out.write("               <button type=\"submit\" value=\"Submit\" > Cadastrar </button>\n");
@@ -197,7 +201,8 @@ public final class cadastrarRental_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("       </div>\n");
       out.write("\n");
       out.write("        <button onclick=\"window.location.href='RentalController?action=cadastrarRental'\" >Atualizar lista cidade</button>\n");
-      out.write("\n");
+      out.write("        <button onclick=\"window.location.href='RentalController?action=simularRental'\" >Simular</button> \n");
+      out.write("        \n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
@@ -400,6 +405,24 @@ public final class cadastrarRental_jsp extends org.apache.jasper.runtime.HttpJsp
     return false;
   }
 
+  private boolean _jspx_meth_c_out_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_out_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_out_0.setParent(null);
+    _jspx_th_c_out_0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${simuladoRental.diarias}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_out_0 = _jspx_th_c_out_0.doStartTag();
+    if (_jspx_th_c_out_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_0);
+      return true;
+    }
+    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_0);
+    return false;
+  }
+
   private boolean _jspx_meth_fmt_formatDate_0(PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -408,7 +431,7 @@ public final class cadastrarRental_jsp extends org.apache.jasper.runtime.HttpJsp
     org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_0 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
     _jspx_th_fmt_formatDate_0.setPageContext(_jspx_page_context);
     _jspx_th_fmt_formatDate_0.setParent(null);
-    _jspx_th_fmt_formatDate_0.setPattern("MM/dd/yyyy");
+    _jspx_th_fmt_formatDate_0.setPattern("MM/dd/yyyy HH:mm:ss");
     _jspx_th_fmt_formatDate_0.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${rental.dateRental}", java.util.Date.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_fmt_formatDate_0 = _jspx_th_fmt_formatDate_0.doStartTag();
     if (_jspx_th_fmt_formatDate_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -438,24 +461,6 @@ public final class cadastrarRental_jsp extends org.apache.jasper.runtime.HttpJsp
     return false;
   }
 
-  private boolean _jspx_meth_c_out_0(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:out
-    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
-    _jspx_th_c_out_0.setPageContext(_jspx_page_context);
-    _jspx_th_c_out_0.setParent(null);
-    _jspx_th_c_out_0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${rental.initialMileage}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
-    int _jspx_eval_c_out_0 = _jspx_th_c_out_0.doStartTag();
-    if (_jspx_th_c_out_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_0);
-      return true;
-    }
-    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_0);
-    return false;
-  }
-
   private boolean _jspx_meth_c_out_1(PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -464,7 +469,7 @@ public final class cadastrarRental_jsp extends org.apache.jasper.runtime.HttpJsp
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_1.setPageContext(_jspx_page_context);
     _jspx_th_c_out_1.setParent(null);
-    _jspx_th_c_out_1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${rental.finalMileage}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${simuladoRental.initialMileage}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_1 = _jspx_th_c_out_1.doStartTag();
     if (_jspx_th_c_out_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_1);
@@ -482,7 +487,7 @@ public final class cadastrarRental_jsp extends org.apache.jasper.runtime.HttpJsp
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_2.setPageContext(_jspx_page_context);
     _jspx_th_c_out_2.setParent(null);
-    _jspx_th_c_out_2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${rental.priceRental}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${rental.finalMileage}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_2 = _jspx_th_c_out_2.doStartTag();
     if (_jspx_th_c_out_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_2);
@@ -500,7 +505,7 @@ public final class cadastrarRental_jsp extends org.apache.jasper.runtime.HttpJsp
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_3 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_3.setPageContext(_jspx_page_context);
     _jspx_th_c_out_3.setParent(null);
-    _jspx_th_c_out_3.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${rental.priceGuarantee}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_3.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${simuladoRental.calculoTotal}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_3 = _jspx_th_c_out_3.doStartTag();
     if (_jspx_th_c_out_3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_3);
@@ -518,7 +523,7 @@ public final class cadastrarRental_jsp extends org.apache.jasper.runtime.HttpJsp
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_4 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_4.setPageContext(_jspx_page_context);
     _jspx_th_c_out_4.setParent(null);
-    _jspx_th_c_out_4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${rental.priceInsuranceCar}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${simuladoRental.priceGuarantee}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_4 = _jspx_th_c_out_4.doStartTag();
     if (_jspx_th_c_out_4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_4);
@@ -536,7 +541,7 @@ public final class cadastrarRental_jsp extends org.apache.jasper.runtime.HttpJsp
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_5 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_5.setPageContext(_jspx_page_context);
     _jspx_th_c_out_5.setParent(null);
-    _jspx_th_c_out_5.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${rental.priceInsuranceRental}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_5.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${simuladoRental.priceInsuranceCar}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_5 = _jspx_th_c_out_5.doStartTag();
     if (_jspx_th_c_out_5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_5);
@@ -554,7 +559,7 @@ public final class cadastrarRental_jsp extends org.apache.jasper.runtime.HttpJsp
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_6 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_6.setPageContext(_jspx_page_context);
     _jspx_th_c_out_6.setParent(null);
-    _jspx_th_c_out_6.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${rental.priceTotal}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_6.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${simuladoRental.priceInsuranceRental}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_6 = _jspx_th_c_out_6.doStartTag();
     if (_jspx_th_c_out_6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_6);
@@ -572,7 +577,7 @@ public final class cadastrarRental_jsp extends org.apache.jasper.runtime.HttpJsp
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_7 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_7.setPageContext(_jspx_page_context);
     _jspx_th_c_out_7.setParent(null);
-    _jspx_th_c_out_7.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${rental.lateFee}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_7.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${simuladoRental.priceTotal}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_7 = _jspx_th_c_out_7.doStartTag();
     if (_jspx_th_c_out_7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_7);
@@ -590,7 +595,7 @@ public final class cadastrarRental_jsp extends org.apache.jasper.runtime.HttpJsp
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_8 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_8.setPageContext(_jspx_page_context);
     _jspx_th_c_out_8.setParent(null);
-    _jspx_th_c_out_8.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${rental.trafficTicket}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_8.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${rental.lateFee}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_8 = _jspx_th_c_out_8.doStartTag();
     if (_jspx_th_c_out_8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_8);
@@ -608,13 +613,31 @@ public final class cadastrarRental_jsp extends org.apache.jasper.runtime.HttpJsp
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_9 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_9.setPageContext(_jspx_page_context);
     _jspx_th_c_out_9.setParent(null);
-    _jspx_th_c_out_9.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${rental.litersFuel}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_9.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${rental.trafficTicket}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_9 = _jspx_th_c_out_9.doStartTag();
     if (_jspx_th_c_out_9.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_9);
       return true;
     }
     _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_9);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_out_10(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_10 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_out_10.setPageContext(_jspx_page_context);
+    _jspx_th_c_out_10.setParent(null);
+    _jspx_th_c_out_10.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${rental.litersFuel}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_out_10 = _jspx_th_c_out_10.doStartTag();
+    if (_jspx_th_c_out_10.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_10);
+      return true;
+    }
+    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_10);
     return false;
   }
 }

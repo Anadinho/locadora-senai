@@ -17,15 +17,15 @@
         <script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
     </head>
     <body>
-        <script>
+<!--        <script>
         $(function() {
             $('input[name=dateRental]').datepicker();
             $('input[name=dateScheduledDevolution]').datepicker();
         });
-        </script>
+        </script>-->
             <label>Realizar Locação</label>  
             <div>
-                <form method="POST" action='RentalController' name="frmAddRental">
+                <form method="POST" action='RentalController?action=cadastrarRentalPf' name="frmAddRental">
                 
                 
                 <label>Veiculos</label>
@@ -69,44 +69,45 @@
                   </c:forEach>
                 </select> <br/> 
                 
-                <label>Data Locação </label> 
-                <input   type="text" name="dateRental" value="<fmt:formatDate pattern="MM/dd/yyyy" value="${rental.dateRental}"/>" /> <br /> 
-
-                                
-                <label>Data Prevista Devolução </label> 
+                <label>Quantidade de diarias</label>
+                <input  type="text" name="diarias" value="<c:out value="${simuladoRental.diarias}" />"/> <br />
+                
+<!--                <label>Data Locação </label> 
+                <input   type="text" name="dateRental" value="<fmt:formatDate pattern="MM/dd/yyyy HH:mm:ss" value="${rental.dateRental}"/>" /> <br /> 
+                          -->
+<!--                <label>Data Prevista Devolução </label> 
                 <input   type="text" name="dateScheduledDevolution" value="<fmt:formatDate pattern="MM/dd/yyyy" value="${rental.dateScheduledDevolution}"/>" /> <br /> 
-
-                
+              -->
                 <label>Kilometragem inicial</label>
-                <input  type="text" name="initialMileage" value="<c:out value="${rental.initialMileage}" />"/> <br />
+                <input  type="text" name="initialMileage" value="<c:out value="${simuladoRental.initialMileage}" />" /> <br />
                 
-                <label>Kilometragem final</label>
-                <input  type="text" name="finalMileage" value="<c:out value="${rental.finalMileage}" />"/> <br /> 
+<!--                <label>Kilometragem final</label>
+                <input  type="text" name="finalMileage" value="<c:out value="${rental.finalMileage}" />"/> <br /> -->
                 
                 <label>Valor locação</label>
-                <input  type="text" name="priceRental" value="<c:out value="${rental.priceRental}" />"/> <br />
+                <input  type="text" name="priceRental" value="<c:out value="${simuladoRental.calculoTotal}" />" /> <br />
                 
                 <label>Valor Caução</label>
-                <input  type="text" name="priceGuarantee" value="<c:out value="${rental.priceGuarantee}" />"/> <br /> 
+                <input  type="text" name="priceGuarantee" value="<c:out value="${simuladoRental.priceGuarantee}" />"/> <br /> 
                 
                 <label>Valor a ser pago pelo seguro do carro</label>
-                <input  type="text" name="priceInsuranceCar" value="<c:out value="${rental.priceInsuranceCar}" />"/> <br />
+                <input  type="text" name="priceInsuranceCar" value="<c:out value="${simuladoRental.priceInsuranceCar}" />"/> <br />
                 
                 <label>taxa seguro carro</label>
-                <input  type="text" name="priceInsuranceRental" value="<c:out value="${rental.priceInsuranceRental}" />"/> <br />
+                <input  type="text" name="priceInsuranceRental" value="<c:out value="${simuladoRental.priceInsuranceRental}" />"/> <br />
                 
                 <label>Valor Total da locação</label>
-                <input  type="text" name="priceTotal" value="<c:out value="${rental.priceTotal}" />"/> <br />
+                <input  type="text" name="priceTotal" value="<c:out value="${simuladoRental.priceTotal}" />"/> <br />
                 
-                 <label>Multa por atraso?</label>
+<!--                 <label>Multa por atraso?</label>
                 <input  type="text" name="lateFee" value="<c:out value="${rental.lateFee}" />"/> <br />
                 
                 
                 <label>Multa de transito?</label>
-                <input  type="text" name="trafficTicket" value="<c:out value="${rental.trafficTicket}" />"/> <br /> 
+                <input  type="text" name="trafficTicket" value="<c:out value="${rental.trafficTicket}" />"/> <br /> -->
                 
-                 <label>Litros de combustivel faltante</label>
-                <input  type="text" name="litersFuel" value="<c:out value="${rental.litersFuel}" />"/> <br /> 
+<!--                 <label>Litros de combustivel faltante</label>
+                <input  type="text" name="litersFuel" value="<c:out value="${rental.litersFuel}" />"/> <br /> -->
                
                 
                <button type="submit" value="Submit" > Cadastrar </button>
@@ -115,7 +116,7 @@
        </div>
 
         <button onclick="window.location.href='RentalController?action=cadastrarRental'" >Atualizar lista cidade</button>
-        <button onclick="window.location.href='RentalController?action=cadastrarRental'" >Simular</button> 
+        <button onclick="window.location.href='RentalController?action=simularRental'" >Simular</button> 
         
     </body>
 </html>
