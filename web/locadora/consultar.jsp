@@ -131,11 +131,13 @@
     </table>
        </div>
          </div>
-        <button onclick="window.location.href='RentalController?action=listarRental'" >listar</button>
+        <!--<button onclick="window.location.href='RentalController?action=listarRental'" >listar</button>-->
            </div>
            
         
-       <br> <button class="btn-editar"> Consultar Locações </button>
+       <br> 
+       <button  class="btn-editar" onclick="window.location.href='RentalController?action=listarRental'" >Atualizar listar</button>
+       <!--<button class="btn-editar"> Consultar Locações </button>-->
         </div>
         
         

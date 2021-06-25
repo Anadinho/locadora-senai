@@ -120,7 +120,8 @@
                 <input  type="text" name="diarias" value="<c:out value="${simuladoRental.diarias}" />"  class="campo" placeholder="Diarias" style="width: 155px" title="Diarias."/> <br />
             
                 
-                <br> <button class="btn-editar"> Simular </button> <br>
+                <!--<br> <button class="btn-editar"> Simular </button> <br>-->
+<!--                <br><button class="btn-editar" onclick="window.location.href='RentalController?action=simularRental'" >Simular</button><br>-->
                 
                 <!--<label>Valor locação</label>-->
                 <input  type="text" name="priceRental" value="<c:out value="${simuladoRental.calculoTotal}" />" readonly="readonly" class="campo" placeholder="Valor da Locação" style="width: 155px" title="Valor de Locação."/> <br />
@@ -137,10 +138,9 @@
                 <!--<label>Valor a ser pago pelo seguro do carro</label>-->
                 <input  type="text" name="priceInsuranceCar" value="<c:out value="${simuladoRental.priceInsuranceCar}" />" readonly="readonly" class="campo" placeholder="Cobertura Seguro" style="width: 155px" title="Valor maximo da cobertura do  Seguro"/> <br />
                 
-                <br> <button class="btn" type="submit" value="Submit" > Realizar Locação </button>
-               
+                <br> <button class="btn" type="submit" value="Submit" > Realizar Locação </button>               
                 </form>
-                
+                <button class="btn-editar" onclick="window.location.href='RentalController?action=simularRental'" >Nova Simulação</button><br>-->
             
             
 <!--            <input type="text" class="campo" style="width: 425px" title="Digite o nome do Veiculo."> <br> 
