@@ -18,6 +18,13 @@ public class Conexao {
     
     private static Connection conexao = null;
     
+    Conexao(){};
+    public static Conexao getInstance(){
+        if(conexao==null)
+            conexao = (Connection) new Conexao();
+        return (Conexao) conexao;
+    }
+    
     public static Connection getConexao(){
         try
         {

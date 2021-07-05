@@ -9,17 +9,22 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>SENAI-PI-LOCADORA</title>
+<!--        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
+        <title>SENAI-PI-LOCADORA</title>-->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
     </head>
     <body>
         
-        <img src="../assets/background2.webp" class="img blur" >
+       <img src="${pageContext.request.contextPath}/assets/background2.webp" class="img blur" >
         
         <nav>
             
-            <a href="../index.jsp"> <img class="home-img" src="../assets/casa.png" height="70px"> </a>
+            <a href="${pageContext.request.contextPath}/index.jsp"> <img class="home-img" src="${pageContext.request.contextPath}/assets/casa.png" height="70px"> </a>
             
             <ul class="gradient">
                 
@@ -30,8 +35,7 @@
                     <ul class="dropdown">
                         <li><a href="VehicleController?action=cadastrarVehicle">Cadastrar</a></li>
                         <li><a href="VehicleController?action=listarVehicle">Consultar</a></li>
-                        <li><a href="../veiculo/editar.jsp">Editar</a></li>
-                        <li><a href="../veiculo/excluir.jsp">Excluir</a></li>
+                        
                     </ul>
                 </li>
                 <li>
@@ -39,8 +43,7 @@
                     <ul class="dropdown">
                         <li><a href="ClientPfController?action=cadastrarClientPf">Cadastrar</a></li>
                         <li><a href="ClientPfController?action=listarClientPf">Consultar</a></li>
-                        <li><a href="editar.jsp">Editar</a></li>
-                        <li><a href="excluir.jsp">Excluir</a></li>
+                        
                     </ul>
                 </li>
                 <li>
@@ -55,8 +58,10 @@
                 <li>
                     Locação
                     <ul class="dropdown">
-                       <li><a href="RentalController?action=simularRental">Cadastrar</a></li>
-                        <li><a href="RentalController?action=listarRental">Consultar</a></li>
+                       <li><a href="RentalController?action=simularRental">Locação-PF</a></li>
+                         <li><a href="RentalController?action=simularRentalPj">Locação - Pj</a></li>
+                        <li><a href="RentalController?action=listarRental">Consultar-PF</a></li>
+                        <li><a href="RentalController?action=listarRentalPj">Consultar-PJ</a></li>
                     </ul>
                 </li>
             </ul> 
@@ -70,9 +75,9 @@
             <!--COLOCAR UMA LISTA?-->
              <div >  
             <div>
-                <label>Clientes Pf</label>
+                
                 <div>      
-          <table border=1>
+          <table border="4" width="80%" >
         <thead>
             <tr>
                 <th>Id</th>
@@ -104,7 +109,7 @@
                      <td><c:out value="${user.client.address.city.uf.name}" /></td>
                     <td><c:out value="${user.client.contact.telephone}" /></td>
                      <td ><a  href="ClientPfController?action=edit&id=<c:out value="${user.id}"/>" >Update</a></td>
-                    <td><a href="ClientPfController?action=delete&id=<c:out value="${user.id}"/>">Delete</a></td>
+                   
                 </tr>
             </c:forEach>
         </tbody>

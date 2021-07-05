@@ -20,7 +20,35 @@ import org.joda.time.Interval;
  */
 public class Rental {
 
-    /**
+
+    private int id;
+    private ClientPf clientPf;
+    private ClientPj clientPj;
+    private Vehicle vehicle;
+    private Driver driver;
+    private  Date dateRental;
+    private String dateTimeRental;
+    private String dateTimeScheduledDevolution;
+    private  Date dateScheduledDevolution;
+    private  Date dateDevolution;
+    private int initialMileage;
+    private int finalMileage;
+    private double priceRental;
+    private double priceGuarantee;
+    private double priceInsuranceCar;
+    private double priceInsuranceRental;
+    private double priceTotal;
+    private String lateFee;
+    private String trafficTicket;
+    private int litersFuel;
+    private Client client;
+    private double diarias;
+    private double valorDiaria;
+    private double calculoTotal;
+    
+
+ 
+     /**
      * @return the dateTimeScheduledDevolution
      */
     public String getDateTimeScheduledDevolution() {
@@ -81,40 +109,6 @@ public class Rental {
         this.diarias = diarias;
     }
 
-
-
-
-
-
-
-    private int id;
-    private ClientPf clientPf;
-    private ClientPj clientPj;
-    private Vehicle vehicle;
-    private Driver driver;
-    private  Date dateRental;
-    private String dateTimeRental;
-    private String dateTimeScheduledDevolution;
-    private  Date dateScheduledDevolution;
-    private  Date dateDevolution;
-    private int initialMileage;
-    private int finalMileage;
-    private double priceRental;
-    private double priceGuarantee;
-    private double priceInsuranceCar;
-    private double priceInsuranceRental;
-    private double priceTotal;
-    private String lateFee;
-    private String trafficTicket;
-    private int litersFuel;
-    private Client client;
-    private double diarias;
-    private double valorDiaria;
-    private double calculoTotal;
-    
-
- 
- 
 
     /**
      * @return the dateTimeRental

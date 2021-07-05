@@ -15,11 +15,11 @@
     </head>
     <body>
 
-        <img src="../assets/background2.webp" class="img blur" >
-
+         <img src="${pageContext.request.contextPath}/assets/background2.webp" class="img blur" >
+        
         <nav>
-
-            <a href="../index.jsp"> <img class="home-img" src="../assets/casa.png" height="70px"> </a>
+            
+            <a href="${pageContext.request.contextPath}/index.jsp"> <img class="home-img" src="${pageContext.request.contextPath}/assets/casa.png" height="70px"> </a>
 
             <ul class="gradient">
 
@@ -55,8 +55,10 @@
                 <li>
                     Locação
                     <ul class="dropdown">
-                      <li><a href="RentalController?action=simularRental">Cadastrar</a></li>
-                        <li><a href="RentalController?action=listarRental">Consultar</a></li>
+                      <li><a href="RentalController?action=simularRental">Locação-PF</a></li>
+                         <li><a href="RentalController?action=simularRentalPj">Locação - Pj</a></li>
+                        <li><a href="RentalController?action=listarRental">Consultar-PF</a></li>
+                        <li><a href="RentalController?action=listarRentalPj">Consultar-PJ</a></li>
 
                     </ul>
                 </li>
@@ -74,7 +76,7 @@
             
             
             <div>
-                <label>Clientes Pf</label>
+                
                 <div>      
           <table border=1>
         <thead>

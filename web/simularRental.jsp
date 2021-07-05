@@ -34,7 +34,8 @@
                     <option value="${vehicle.licensePlate}">
                         ${vehicle.licensePlate} -
                         ${vehicle.model.name}-
-                        ${vehicle.model.brand.name}
+                        ${vehicle.model.brand.name}-
+                        ${vehicle.situationVehicle.name}
                     </option>
                   </c:forEach>
                 </select> <br/>

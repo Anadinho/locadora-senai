@@ -24,6 +24,8 @@ import java.util.List;
 public class RentalDal {
     
             private Connection conexao;
+            
+            
         
         public RentalDal() {
         conexao = Conexao.getConexao();
@@ -67,7 +69,55 @@ public class RentalDal {
         
          public List<Rental> getAllRental() {
         List<Rental> rentals = new ArrayList<Rental>();
-            String sql = "select * from rental";
+            String sql = "select * from rental r join clientPf cpf on cpf.fk_client_pf =r.fk_client_rental ";
+                    VehicleDal vehicle = new VehicleDal();
+                    ClientPfDal clientPf = new ClientPfDal();
+                    ClientPjDal clientPj = new ClientPjDal();
+                    DriverDal driver = new DriverDal();
+                    ClientDal client = new ClientDal();
+
+                            
+            try {
+                Statement statement = conexao.createStatement();
+                ResultSet rs = statement.executeQuery(sql);
+                while (rs.next()) {
+                    Rental rental = new Rental();
+                    rental.setId(rs.getInt("id"));
+                    rental.setVehicle(vehicle.getVehicleById(rs.getString("fk_vehicle_rental")));
+                    rental.setClientPf(clientPf.getClientPfById(rs.getInt("fk_client_rental")));
+//                    rental.setClientPj(clientPj.getClientPjById(rs.getInt("fk_client_rental")));
+                    rental.setDriver(driver.getDriverById(rs.getString("fk_driver_rental")));
+                    rental.setDateRental(rs.getDate("dateRental"));
+                    rental.setDateTimeRental(rs.getString("dateRental"));
+                    rental.setDateDevolution(rs.getDate("dateDevolution"));                    
+                    rental.setDateScheduledDevolution(rs.getDate("dateScheduledDevolution"));
+                    rental.setDateTimeScheduledDevolution(rs.getString("dateScheduledDevolution"));
+                    rental.setInitialMileage(rs.getInt("initialMileage"));
+                    rental.setFinalMileage(rs.getInt("finalMileage"));
+                    rental.setPriceRental(rs.getDouble("priceRental"));
+                    rental.setPriceGuarantee(rs.getDouble("priceGuarantee"));
+                    rental.setPriceInsuranceCar(rs.getDouble("priceInsuranceCar"));
+                    rental.setPriceInsuranceRental(rs.getDouble("priceInsuranceRental"));
+                    rental.setPriceTotal(rs.getDouble("priceTotal"));
+                    rental.setLateFee(rs.getString("lateFee"));
+                    rental.setTrafficTicket(rs.getString("trafficTicket"));
+                    rental.setLitersFuel(rs.getInt("litersFuel"));
+             
+                    
+                    
+                    
+                    rentals.add(rental);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            return rentals;
+    }
+         
+        public List<Rental> getAllRentalPj() {
+        List<Rental> rentals = new ArrayList<Rental>();
+            String sql = "select * from rental r join clientPj cpj on cpj.fk_client_pj =r.fk_client_rental";
                     VehicleDal vehicle = new VehicleDal();
                     ClientPfDal clientPf = new ClientPfDal();
                     ClientPjDal clientPj = new ClientPjDal();
@@ -111,7 +161,8 @@ public class RentalDal {
             }
 
             return rentals;
-    }
+    } 
+         
          
  public Rental getRentalById(int id) {
                     Rental rental = new Rental();

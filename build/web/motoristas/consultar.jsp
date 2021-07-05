@@ -15,11 +15,11 @@
     </head>
     <body>
         
-        <img src="../assets/background2.webp" class="img blur" >
+         <img src="${pageContext.request.contextPath}/assets/background2.webp" class="img blur" >
         
         <nav>
             
-            <a href="../index.jsp"> <img class="home-img" src="../assets/casa.png" height="70px"> </a>
+            <a href="${pageContext.request.contextPath}/index.jsp"> <img class="home-img" src="${pageContext.request.contextPath}/assets/casa.png" height="70px"> </a>
             
             <ul class="gradient">
                 
@@ -39,8 +39,7 @@
                     <ul class="dropdown">
                         <li><a href="ClientPfController?action=cadastrarClientPf">Cadastrar</a></li>
                         <li><a href="ClientPfController?action=listarClientPf">Consultar</a></li>
-                        <li><a href="../cliente/editar.jsp">Editar</a></li>
-                        <li><a href="../cliente/excluir.jsp">Excluir</a></li>
+                        
                     </ul>
                 </li>
                 <li>
@@ -48,15 +47,16 @@
                     <ul class="dropdown">
                         <li><a href="DriverController?action=cadastrarDriver">Cadastrar</a></li>
                         <li><a href="DriverController?action=listarDriver">Consultar</a></li>
-                        <li><a href="editar.jsp">Editar</a></li>
-                        <li><a href="excluir.jsp">Excluir</a></li>
+                        
                     </ul>
                 </li>
                 <li>
                     Locação
                     <ul class="dropdown">
-                       <li><a href="RentalController?action=simularRental">Cadastrar</a></li>
-                        <li><a href="RentalController?action=listarRental">Consultar</a></li>
+                      <li><a href="RentalController?action=simularRental">Locação-PF</a></li>
+                         <li><a href="RentalController?action=simularRentalPj">Locação - Pj</a></li>
+                        <li><a href="RentalController?action=listarRental">Consultar-PF</a></li>
+                        <li><a href="RentalController?action=listarRentalPj">Consultar-PJ</a></li>
                     </ul>
                 </li>
             </ul> 
@@ -68,7 +68,7 @@
             <!--COLOCAR UMA LISTA?-->
               
             <div>
-                <label>MOTORISTAS</label>
+                
                 <div>      
           <table border=1>
         <thead>

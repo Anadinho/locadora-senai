@@ -104,13 +104,27 @@ public class RentalController extends HttpServlet {
                  forward = LIST_USER;
                  request.setAttribute("rentals", dal.getAllRental());
                  
-        }else  if(action.equalsIgnoreCase("cadastrarRental")){
+        }else if(action.equalsIgnoreCase("listarRentalPj")){
+                 forward = "./locadora/consultarPj.jsp";
+                 request.setAttribute("rentals", dal.getAllRentalPj());
+                 
+        }
+        else  if(action.equalsIgnoreCase("cadastrarRental")){
              
              request.setAttribute("clientPjs", dalClientPj.getAllClientPj());
              request.setAttribute("clientPfs", dalClientPf.getAllClientPf()); 
              request.setAttribute("vehicles", dalVehicle.getAllVehicle()); 
              request.setAttribute("drivers", dalDriver.getAllDriver()); 
-             forward = INSERT_OR_EDIT;
+             forward = INSERT_OR_EDIT;             
+             
+        }else  if(action.equalsIgnoreCase("cadastrarRentalPj")){
+             
+             request.setAttribute("clientPjs", dalClientPj.getAllClientPj());
+             request.setAttribute("clientPfs", dalClientPf.getAllClientPf()); 
+             request.setAttribute("vehicles", dalVehicle.getAllVehicle()); 
+             request.setAttribute("drivers", dalDriver.getAllDriver()); 
+             forward = "./locadora/cadastrarPj.jsp";
+             
              
         }else  if(action.equalsIgnoreCase("simularRental")){     
                            
@@ -119,6 +133,14 @@ public class RentalController extends HttpServlet {
              request.setAttribute("vehicles", dalVehicle.getAllVehicle()); 
              request.setAttribute("drivers", dalDriver.getAllDriver());           
              forward = "./locadora/simular.jsp";
+
+        }else  if(action.equalsIgnoreCase("simularRentalPj")){     
+                           
+             request.setAttribute("clientPjs", dalClientPj.getAllClientPj());
+             request.setAttribute("clientPfs", dalClientPf.getAllClientPf()); 
+             request.setAttribute("vehicles", dalVehicle.getAllVehicle()); 
+             request.setAttribute("drivers", dalDriver.getAllDriver());           
+             forward = "./locadora/simularPj.jsp";
         }
         
         
@@ -151,19 +173,6 @@ public class RentalController extends HttpServlet {
             rental.setClient(dalClient.getClientById(Integer.parseInt(request.getParameter("fk_client"))));
             rental.setDriver(dalDriver.getDriverById(request.getParameter("driver")));
                      
-//            try {
-//            Date dateRental = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("dateRental"));
-//            rental.setDateRental(dateRental);
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
-            
-//            try {
-//            Date dateScheduledDevolution = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("dateScheduledDevolution"));
-//            rental.setDateScheduledDevolution(dateScheduledDevolution);
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
             rental.setDiarias(Double.parseDouble(request.getParameter("diarias"))); 
             rental.setInitialMileage(Integer.parseInt(request.getParameter("initialMileage")));
 //            rental.setFinalMileage(Integer.parseInt(request.getParameter("finalMileage")));  
@@ -182,7 +191,36 @@ public class RentalController extends HttpServlet {
             request.setAttribute("rentals", dal.getAllRental());
             view.forward(request, response);
             
+            }if(action.equalsIgnoreCase("cadastrarRentalPj")){
+        
+            Rental rental = new Rental();
+                     
+            rental.setVehicle(dalVehicle.getVehicleById(request.getParameter("vehicle")));
+            rental.setClient(dalClient.getClientById(Integer.parseInt(request.getParameter("fk_client"))));
+            rental.setDriver(dalDriver.getDriverById(request.getParameter("driver")));
+                     
+            rental.setDiarias(Double.parseDouble(request.getParameter("diarias"))); 
+            rental.setInitialMileage(Integer.parseInt(request.getParameter("initialMileage")));
+//            rental.setFinalMileage(Integer.parseInt(request.getParameter("finalMileage")));  
+            rental.setPriceRental(Double.parseDouble(request.getParameter("priceRental")));
+            rental.setPriceGuarantee(Double.parseDouble(request.getParameter("priceGuarantee")));
+            rental.setPriceInsuranceCar(Double.parseDouble(request.getParameter("priceInsuranceCar")));
+            rental.setPriceInsuranceRental(Double.parseDouble(request.getParameter("priceInsuranceRental")));
+            rental.setPriceTotal(Double.parseDouble(request.getParameter("priceTotal")));
+            rental.setLateFee(request.getParameter("lateFee"));
+            rental.setTrafficTicket(request.getParameter("trafficTicket"));            
+//            rental.setLitersFuel(Integer.parseInt(request.getParameter("litersFuel")));
+            dal.addRental(rental);
+            
+        
+            RequestDispatcher view = request.getRequestDispatcher("./locadora/consultarPj.jsp");
+            request.setAttribute("rentals", dal.getAllRentalPj());
+            view.forward(request, response);
+            
             }
+            
+            
+            
              else if(action.equalsIgnoreCase("simularRental")){
              Rental rental = new Rental();
              
@@ -204,7 +242,29 @@ public class RentalController extends HttpServlet {
              RequestDispatcher view = request.getRequestDispatcher(INSERT_OR_EDIT);             
              view.forward(request, response);
                 
+        } else if(action.equalsIgnoreCase("simularRentalPj")){
+             Rental rental = new Rental();
+             
+             
+             rental.setInitialMileage(dalVehicle.getVehicleById(request.getParameter("vehicle")).getMileage());
+             rental.setDiarias(Double.parseDouble(request.getParameter("diarias")));             
+             rental.setValorDiaria(dalVehicle.getVehicleById(request.getParameter("vehicle")).getCategory().getValor());
+             rental.setCalculoTotal(Double.parseDouble(request.getParameter("diarias")), dalVehicle.getVehicleById(request.getParameter("vehicle")).getCategory().getValor());
+             rental.setCalculoCaucao(rental.getCalculoTotal());
+             rental.setPriceInsuranceCar(100000);
+             rental.setValorSeguroLocacao(rental.getCalculoTotal());
+             rental.setCalculoTotalLocacao(rental.getCalculoTotal(), rental.getPriceInsuranceRental());
+             request.setAttribute("simuladoRental", rental); 
+             
+             request.setAttribute("clientPjs", dalClientPj.getAllClientPj());
+             request.setAttribute("clientPfs", dalClientPf.getAllClientPf()); 
+             request.setAttribute("vehicles", dalVehicle.getAllVehicle()); 
+             request.setAttribute("drivers", dalDriver.getAllDriver()); 
+             RequestDispatcher view = request.getRequestDispatcher("./locadora/cadastrarPj.jsp");             
+             view.forward(request, response);
+                
         }
+            
     }
 
     /**
